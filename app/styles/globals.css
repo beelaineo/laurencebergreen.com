@@ -17,18 +17,30 @@ body {
 
 body {
   color: var(--foreground-color);
-  background: var(--background-color);
+  background: var(--background-color); /* Set background color to the value of the CSS variable --background-color */
   font-family: var(--font-sans);
+  font-weight: 200;
 }
 
-h1 {
+h1, h2, h3, h4 {
   font-family: var(--font-serif);
-  font-size: 5rem;
   text-transform: uppercase;
   font-weight: 400;
+  letter-spacing: 0.65rem;
+  line-height: 150px;
+  margin: 0;
+}
+
+h1, h2 {
+  font-size: 150px;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
