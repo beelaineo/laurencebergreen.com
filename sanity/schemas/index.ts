@@ -3,4 +3,7 @@ import homepage from './homepage'
 import post from './post'
 import settings from './settings'
 
-export const schemaTypes = [book, homepage, post, settings]
+const schemaTypes = [book, homepage, post, settings]
+const schemas = [...schemaTypes]
+
+export default schemas
