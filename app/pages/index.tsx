@@ -10,6 +10,8 @@ import BookItem from '../components/book-item'
 import EventItem from '../components/event-item'
 import NewsItem from '../components/news-item'
 import Arrow from '../components/icon-arrow'
+import { Parallax } from 'react-scroll-parallax'
+import React, {useRef, useEffect} from 'react'
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T
 type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
@@ -60,12 +62,14 @@ export default function Homepage({ homepage }: Props) {
             className={styles.hero_image}
             style={{ objectFit: 'cover' }}
           />
-          <div className={styles.hero_text}>
-            <h1>
-              {heroTextRows.map ((line: string, index: number) => (
-                <p key={index}>{line}</p>
-              ))}</h1>
-          </div>
+          <Parallax speed={-20}>
+            <div className={styles.hero_text}>
+              <h1>
+                {heroTextRows.map ((line: string, index: number) => (
+                  <p key={index}>{line}</p>
+                ))}</h1>
+            </div>
+          </Parallax>
           <h3 className={styles.sticker}>
             {stickerChars.map((char: string, i: number) => (
               <span
@@ -81,7 +85,9 @@ export default function Homepage({ homepage }: Props) {
           </h3>
         </section>
         <section className={styles.recent}>
-          <h2>Recent Publications</h2>
+          <Parallax speed={-10} style={{zIndex: 1}}>
+            <h2>Recent Publications</h2>
+          </Parallax>
             <div className={styles.books}>
               {homepage.books.map((book: BookType) => (
                   <BookItem key={book._id} book={book} />
@@ -94,14 +100,14 @@ export default function Homepage({ homepage }: Props) {
         </section>
         <section className={styles.events}>
           <div className={styles.wrapper}>
-            <h2>Speaking Engagements</h2>
+            <Parallax speed={-10} className={styles.h2_wrapper}><h2>Speaking Engagements</h2></Parallax>
               {homepage.events.map((event: SanityKeyed<EventType>, i: number) => (
                 <EventItem key={i} event={event} />
               ))}
           </div>
         </section>
         <section className={styles.news}>
-          <h2>News</h2>
+          <Parallax speed={-10} className={styles.h2_wrapper}>News</Parallax>
           <div className={styles.arrow_icon}>
             <Arrow />
           </div>

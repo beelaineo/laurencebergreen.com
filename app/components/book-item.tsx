@@ -5,6 +5,7 @@ import styles from '../styles/BookItem.module.css'
 import Img from 'next/image'
 import { useNextSanityImage, UseNextSanityImageProps } from 'next-sanity-image'
 import sanityClient from '../sanityClient'
+import { Parallax } from 'react-scroll-parallax'
 
 interface BookItemProps {
   book: BookType
@@ -29,9 +30,9 @@ const BookItem = ({ book }: BookItemProps) => {
           className={styles.cover_image}
         />
       </div>
-      <div className={styles.info}>
+      <Parallax speed={-5} className={styles.info}>
         <h3>{formattedTitle}</h3>
-      </div>
+      </Parallax>
     </div>
   )
 }

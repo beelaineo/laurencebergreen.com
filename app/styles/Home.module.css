@@ -125,7 +125,7 @@
   row-gap: 2rem;
 }
 
-.events h2 {
+.events .h2_wrapper {
   position: absolute;
   left:100px;
   top: 100px;
@@ -138,7 +138,13 @@
   width: 100%;
 }
 
-.news h2 {
+.news .h2_wrapper {
+  text-transform: uppercase;
+  font-family: var(--font-serif);
+  font-size: 150px;
+  letter-spacing: 0.65rem;
+  line-height: 150px;
+  text-transform: uppercase;
   position: absolute;
   left:100px;
   top: 230px;

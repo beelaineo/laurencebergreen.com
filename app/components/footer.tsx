@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styles from '../styles/Footer.module.css'
 import sanityClient from '../sanityClient'
 import { SanityKeyed } from 'sanity-codegen'
+import { Parallax } from 'react-scroll-parallax'
 
 const { useEffect, useState } = React
 
@@ -38,7 +39,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.socials}>
-        {settings?.socials_title && <h2>{settings?.socials_title}</h2>}
+        {settings?.socials_title && <Parallax speed={-10} className={styles.h2}>{settings.socials_title}</Parallax>}
         {settings?.socials.map((item: SanityKeyed<SocialType>, i: number) => (
             <Link key={i} href={item.url} target="_blank">{item.title}</Link>
           )

@@ -12,11 +12,21 @@
   position: relative;
 }
 
-.socials h2 {
+.socials .h2 {
   position: absolute;
   top: -75px;
   left: -50px;
   pointer-events: none;
+}
+
+.h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin: 0;
+  font-size: 150px;
+  letter-spacing: 0.65rem;
+  line-height: 150px;
+  text-transform: uppercase;
 }
 
 .socials a {
