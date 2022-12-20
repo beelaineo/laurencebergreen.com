@@ -22,6 +22,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scroll-parallax": "^3.3.2",
+    "sanity-codegen": "^0.9.8",
     "typescript": "4.9.4"
   },
   "devDependencies": {
