@@ -15,7 +15,7 @@ import type {
   SanityImageDimensions,
   SanityImagePalette,
   SanityImagePaletteSwatch,
-} from 'sanity-codegen'
+} from "sanity-codegen";
 
 export type {
   SanityReference,
@@ -34,7 +34,7 @@ export type {
   SanityImageDimensions,
   SanityImagePalette,
   SanityImagePaletteSwatch,
-}
+};
 
 /**
  * Book
@@ -42,21 +42,21 @@ export type {
  *
  */
 export interface Book extends SanityDocument {
-  _type: 'book'
+  _type: "book";
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string
+  title?: string;
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: 'slug'; current: string }
+  slug?: { _type: "slug"; current: string };
 
   /**
    * Cover Image — `image`
@@ -64,39 +64,39 @@ export interface Book extends SanityDocument {
    *
    */
   cover?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
-    crop?: SanityImageCrop
-    hotspot?: SanityImageHotspot
-  }
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
 
   /**
    * Theme Color — `string`
    *
    *
    */
-  color?: string
+  color?: string;
 
   /**
    * Date Published — `date`
    *
    *
    */
-  date?: string
+  date?: string;
 
   /**
    * Buy Link (default) — `url`
    *
    *
    */
-  buy_link?: string
+  buy_link?: string;
 
   /**
    * Intro Text — `array`
    *
    *
    */
-  intro?: Array<SanityKeyed<SanityBlock>>
+  intro?: Array<SanityKeyed<SanityBlock>>;
 
   /**
    * Intro Images — `array`
@@ -105,12 +105,12 @@ export interface Book extends SanityDocument {
    */
   intro_gallery?: Array<
     SanityKeyed<{
-      _type: 'image'
-      asset: SanityReference<SanityImageAsset>
-      crop?: SanityImageCrop
-      hotspot?: SanityImageHotspot
+      _type: "image";
+      asset: SanityReference<SanityImageAsset>;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
     }>
-  >
+  >;
 
   /**
    * Publishers — `array`
@@ -119,22 +119,22 @@ export interface Book extends SanityDocument {
    */
   publishers?: Array<
     SanityKeyed<{
-      _type: 'titledLink'
+      _type: "titledLink";
       /**
        * Title — `string`
        *
        *
        */
-      title?: string
+      title?: string;
 
       /**
        * URL — `url`
        *
        *
        */
-      url?: string
+      url?: string;
     }>
-  >
+  >;
 
   /**
    * Accolades — `array`
@@ -143,22 +143,22 @@ export interface Book extends SanityDocument {
    */
   accolades?: Array<
     SanityKeyed<{
-      _type: 'titledLink'
+      _type: "titledLink";
       /**
        * Title — `string`
        *
        *
        */
-      title?: string
+      title?: string;
 
       /**
        * URL — `url`
        *
        *
        */
-      url?: string
+      url?: string;
     }>
-  >
+  >;
 
   /**
    * Visit Button — `object`
@@ -166,21 +166,21 @@ export interface Book extends SanityDocument {
    *
    */
   visit?: {
-    _type: 'visit'
+    _type: "visit";
     /**
      * Title — `string`
      *
      *
      */
-    title?: string
+    title?: string;
 
     /**
      * URL — `url`
      *
      *
      */
-    url?: string
-  }
+    url?: string;
+  };
 
   /**
    * Book Sellers — `array`
@@ -189,29 +189,29 @@ export interface Book extends SanityDocument {
    */
   sellers?: Array<
     SanityKeyed<{
-      _type: 'seller'
+      _type: "seller";
       /**
        * Category — `string`
        *
        *
        */
-      category?: 'hardcover' | 'paperback' | 'ebook'
+      category?: "hardcover" | "paperback" | "ebook";
 
       /**
        * Title — `string`
        *
        *
        */
-      title?: string
+      title?: string;
 
       /**
        * URL — `url`
        *
        *
        */
-      url?: string
+      url?: string;
     }>
-  >
+  >;
 
   /**
    * Reviews — `array`
@@ -220,29 +220,29 @@ export interface Book extends SanityDocument {
    */
   reviews?: Array<
     SanityKeyed<{
-      _type: 'review'
+      _type: "review";
       /**
        * Source — `string`
        *
        *
        */
-      source?: string
+      source?: string;
 
       /**
        * Quote — `string`
        *
        *
        */
-      quote?: string
+      quote?: string;
 
       /**
        * URL — `url`
        *
        *
        */
-      url?: string
+      url?: string;
     }>
-  >
+  >;
 
   /**
    * Excerpt — `object`
@@ -250,21 +250,21 @@ export interface Book extends SanityDocument {
    *
    */
   excerpt?: {
-    _type: 'excerpt'
+    _type: "excerpt";
     /**
      * Text — `array`
      *
      *
      */
-    text?: Array<SanityKeyed<SanityBlock>>
+    text?: Array<SanityKeyed<SanityBlock>>;
 
     /**
      * More Text — `array`
      *
      *
      */
-    text_more?: Array<SanityKeyed<SanityBlock>>
-  }
+    text_more?: Array<SanityKeyed<SanityBlock>>;
+  };
 
   /**
    * Gallery — `object`
@@ -272,13 +272,13 @@ export interface Book extends SanityDocument {
    *
    */
   gallery?: {
-    _type: 'gallery'
+    _type: "gallery";
     /**
      * Title — `string`
      *
      *
      */
-    title?: string
+    title?: string;
 
     /**
      * Images — `array`
@@ -287,28 +287,28 @@ export interface Book extends SanityDocument {
      */
     images?: Array<
       SanityKeyed<{
-        _type: 'gallery_image'
+        _type: "gallery_image";
         /**
          * Image — `image`
          *
          *
          */
         image?: {
-          _type: 'image'
-          asset: SanityReference<SanityImageAsset>
-          crop?: SanityImageCrop
-          hotspot?: SanityImageHotspot
-        }
+          _type: "image";
+          asset: SanityReference<SanityImageAsset>;
+          crop?: SanityImageCrop;
+          hotspot?: SanityImageHotspot;
+        };
 
         /**
          * Caption — `string`
          *
          *
          */
-        caption?: string
+        caption?: string;
       }>
-    >
-  }
+    >;
+  };
 
   /**
    * Links — `array`
@@ -317,22 +317,22 @@ export interface Book extends SanityDocument {
    */
   links?: Array<
     SanityKeyed<{
-      _type: 'titledLink'
+      _type: "titledLink";
       /**
        * Title — `string`
        *
        *
        */
-      title?: string
+      title?: string;
 
       /**
        * URL — `url`
        *
        *
        */
-      url?: string
+      url?: string;
     }>
-  >
+  >;
 }
 
 /**
@@ -341,21 +341,21 @@ export interface Book extends SanityDocument {
  *
  */
 export interface Homepage extends SanityDocument {
-  _type: 'homepage'
+  _type: "homepage";
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string
+  title?: string;
 
   /**
    * Hero Text — `text`
    *
    *
    */
-  hero_text?: string
+  hero_text?: string;
 
   /**
    * Hero Image — `image`
@@ -363,25 +363,25 @@ export interface Homepage extends SanityDocument {
    *
    */
   hero_image?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
-    crop?: SanityImageCrop
-    hotspot?: SanityImageHotspot
-  }
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
 
   /**
    * Sticker Text — `string`
    *
    *
    */
-  sticker_text?: string
+  sticker_text?: string;
 
   /**
    * Recent Publications — `array`
    *
    *
    */
-  books?: Array<SanityKeyedReference<Book>>
+  books?: Array<SanityKeyedReference<Book>>;
 
   /**
    * Events — `array`
@@ -390,34 +390,41 @@ export interface Homepage extends SanityDocument {
    */
   events?: Array<
     SanityKeyed<{
-      _type: 'event'
+      _type: "event";
       /**
        * Title — `string`
        *
        *
        */
-      title?: string
+      title?: string;
 
       /**
        * Place — `string`
        *
        *
        */
-      place?: string
+      place?: string;
 
       /**
        * Subtitle / Address — `text`
        *
        *
        */
-      subtitle?: string
+      subtitle?: string;
 
       /**
        * Date/Time — `datetime`
        *
        *
        */
-      datetime?: string
+      datetime?: string;
+
+      /**
+       * Timezone — `string`
+       *
+       *
+       */
+      timezone?: string;
 
       /**
        * Link — `object`
@@ -425,30 +432,30 @@ export interface Homepage extends SanityDocument {
        *
        */
       titledLink?: {
-        _type: 'titledLink'
+        _type: "titledLink";
         /**
          * Title — `string`
          *
          *
          */
-        title?: string
+        title?: string;
 
         /**
          * URL — `url`
          *
          *
          */
-        url?: string
-      }
+        url?: string;
+      };
     }>
-  >
+  >;
 
   /**
    * News — `array`
    *
    *
    */
-  news?: Array<SanityKeyed<Post>>
+  news?: Array<SanityKeyed<Post>>;
 }
 
 /**
@@ -457,28 +464,28 @@ export interface Homepage extends SanityDocument {
  *
  */
 export interface Post extends SanityDocument {
-  _type: 'post'
+  _type: "post";
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string
+  title?: string;
 
   /**
    * Date — `date`
    *
    *
    */
-  date?: string
+  date?: string;
 
   /**
    * Text — `text`
    *
    *
    */
-  text?: string
+  text?: string;
 
   /**
    * Image — `image`
@@ -486,18 +493,18 @@ export interface Post extends SanityDocument {
    *
    */
   cover?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
-    crop?: SanityImageCrop
-    hotspot?: SanityImageHotspot
-  }
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
 
   /**
    * Link — `url`
    *
    *
    */
-  link?: string
+  link?: string;
 }
 
 /**
@@ -506,14 +513,14 @@ export interface Post extends SanityDocument {
  *
  */
 export interface Settings extends SanityDocument {
-  _type: 'settings'
+  _type: "settings";
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string
+  title?: string;
 
   /**
    * Navigation Links — `array`
@@ -523,22 +530,22 @@ export interface Settings extends SanityDocument {
   nav_links?: Array<
     | SanityKeyedReference<Homepage>
     | SanityKeyed<{
-        _type: 'router-link'
+        _type: "router-link";
         /**
          * Title — `string`
          *
          *
          */
-        title?: string
+        title?: string;
 
         /**
          * Route — `string`
          *
          *
          */
-        route?: string
+        route?: string;
       }>
-  >
+  >;
 
   /**
    * Footer Links — `array`
@@ -547,29 +554,29 @@ export interface Settings extends SanityDocument {
    */
   footer_links?: Array<
     SanityKeyed<{
-      _type: 'router-link'
+      _type: "router-link";
       /**
        * Title — `string`
        *
        *
        */
-      title?: string
+      title?: string;
 
       /**
        * Reference — `reference`
        *
        *
        */
-      page?: SanityReference<Homepage>
+      page?: SanityReference<Homepage>;
     }>
-  >
+  >;
 
   /**
    * Copyright Text — `string`
    *
    *
    */
-  copyright?: string
+  copyright?: string;
 
   /**
    * Site Credit — `object`
@@ -577,28 +584,28 @@ export interface Settings extends SanityDocument {
    *
    */
   credit?: {
-    _type: 'credit'
+    _type: "credit";
     /**
      * Text — `string`
      *
      *
      */
-    text?: string
+    text?: string;
 
     /**
      * URL — `url`
      *
      *
      */
-    url?: string
-  }
+    url?: string;
+  };
 
   /**
    * Title — `string`
    *
    *
    */
-  socials_title?: string
+  socials_title?: string;
 
   /**
    * Social Links — `array`
@@ -607,22 +614,22 @@ export interface Settings extends SanityDocument {
    */
   socials?: Array<
     SanityKeyed<{
-      _type: 'social'
+      _type: "social";
       /**
        * Title — `string`
        *
        *
        */
-      title?: string
+      title?: string;
 
       /**
        * URL — `url`
        *
        *
        */
-      url?: string
+      url?: string;
     }>
-  >
+  >;
 }
 
-export type Documents = Book | Homepage | Post | Settings
+export type Documents = Book | Homepage | Post | Settings;

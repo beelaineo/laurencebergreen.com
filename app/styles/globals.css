@@ -9,6 +9,11 @@
   margin: 0;
 }
 
+*:before, *:after {
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -24,15 +29,20 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
-  text-transform: uppercase;
   font-weight: 400;
-  letter-spacing: 0.65rem;
-  line-height: 150px;
   margin: 0;
 }
 
 h1, h2 {
   font-size: 150px;
+  letter-spacing: 0.65rem;
+  line-height: 150px;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 40px;
+  letter-spacing: 0px;
 }
 
 a {
@@ -43,4 +53,53 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* HEADER */
+.menu-toggle {
+  display: flex;
+  outline: none;
+  height: 32px;
+  width: 72px;
+  border: 0px;
+  padding: 0px;
+  padding-top:16px;
+  background: transparent;
+  transition: all 250ms ease-out;
+  cursor: pointer;
+  position: fixed;
+  top: 4rem;
+  right: 2rem;
+  z-index: 2;
+}
+
+.menu-toggle:before, .menu-toggle:after {
+  content: '';
+  width: 72px;
+  height: 2px;
+  position: absolute;
+  background: #fff;
+  transition: all 250ms ease-out;
+  will-change: transform;
+}
+
+.menu-toggle:before {
+  transform: translateY(-16px);
+}
+
+.menu-toggle:after {
+  transform: translateY(16px);
+}
+
+.active.menu-toggle:before {
+  transform: translateY(0) rotate(45deg);
+}
+
+.active.menu-toggle:after {
+  transform: translateY(0) rotate(-45deg);
+} 
+
+*::selection {
+  background: rgba(0, 0, 0, 0.09);
+  color: inherit;
 }

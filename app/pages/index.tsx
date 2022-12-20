@@ -1,15 +1,21 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Img from 'next/image'
+import { useNextSanityImage, UseNextSanityImageProps } from 'next-sanity-image'
 import styles from '../styles/Home.module.css'
-import { createClient } from 'next-sanity'
+import sanityClient from '../sanityClient'
 import { Post } from '../sanity-schema'
 import { SanityKeyed } from 'sanity-codegen'
 import { Book as BookType } from '../sanity-schema'
+import BookItem from '../components/book-item'
+import EventItem from '../components/event-item'
+import NewsItem from '../components/news-item'
+import Arrow from '../components/icon-arrow'
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T
 type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
 
 interface EventType {
+  _type: "event"
   title?: string
   place?: string
   subtitle?: string
@@ -24,6 +30,10 @@ interface EventType {
 export default function Homepage({ homepage }: Props) {
   console.log('homepage doc', homepage)
 
+  const heroImg: UseNextSanityImageProps = useNextSanityImage(
+		sanityClient,
+		homepage.hero_image
+	)
   const heroTextRows = homepage.hero_text.split('\n')
 
   const stickerChars = homepage.sticker_text.split('')
@@ -41,12 +51,14 @@ export default function Homepage({ homepage }: Props) {
       </Head>
       <main className={styles.main}>
         <section className={styles.hero}>
-          <Image
-            src={homepage.hero_image?.asset.url}
+          <Img
+            src={heroImg.src}
+            loader={heroImg.loader}
             alt="hero image"
-            width={homepage.hero_image?.asset.metadata.dimensions.width}
-            height={homepage.hero_image?.asset.metadata.dimensions.height}
+            width={heroImg.width}
+            height={heroImg.height}
             className={styles.hero_image}
+            style={{ objectFit: 'cover' }}
           />
           <div className={styles.hero_text}>
             <h1>
@@ -70,52 +82,52 @@ export default function Homepage({ homepage }: Props) {
         </section>
         <section className={styles.recent}>
           <h2>Recent Publications</h2>
-            {homepage.books.map((book: BookType) => (
-              <div key={book._id} className={styles.book}>
-                <h3>{book.title}</h3>
-              </div>
-            ))}
-          <div className={styles.shelf}></div>
-          <div className={styles.shelf}></div>
+            <div className={styles.books}>
+              {homepage.books.map((book: BookType) => (
+                  <BookItem key={book._id} book={book} />
+              ))}
+            </div>
+          <div className={styles.background}>
+            <div className={styles.shelf}></div>
+            <div className={styles.shelf}></div>
+          </div>
         </section>
         <section className={styles.events}>
-          <h2>Speaking Engagements</h2>
-            {homepage.events.map((event: SanityKeyed<EventType>, i: number) => (
-              <div key={i} className={styles.event}>
-                <h3>{event?.title}</h3>
-              </div>
-            ))}
-          <div className={styles.shelf}></div>
-          <div className={styles.shelf}></div>
+          <div className={styles.wrapper}>
+            <h2>Speaking Engagements</h2>
+              {homepage.events.map((event: SanityKeyed<EventType>, i: number) => (
+                <EventItem key={i} event={event} />
+              ))}
+          </div>
         </section>
         <section className={styles.news}>
           <h2>News</h2>
+          <div className={styles.arrow_icon}>
+            <Arrow />
+          </div>
+          <div className={styles.wrapper}>
             {homepage.news.map((post: SanityKeyed<Post>, i: number) => (
-              <div key={i} className={styles.event}>
-                <h3>{post?.title}</h3>
-              </div>
+              <NewsItem key={i} post={post} />
             ))}
-          <div className={styles.shelf}></div>
-          <div className={styles.shelf}></div>
+          </div>
         </section>
       </main>
     </>
   )
 }
 
-const client = createClient({
-  projectId: 'oebpyzcq',
-  dataset: 'production',
-  apiVersion: '2022-12-16',
-  useCdn: false,
-})
-
 export async function getStaticProps() {
-  const homepage = await client.fetch(`*[_type == "homepage"][0]{
+  const homepage = await sanityClient.fetch(`*[_type == "homepage"][0]{
     ...,
     books[]->,
     events[],
-    news[0..9],
+    news[] {
+      ...,
+      cover {
+        ...,
+        asset->
+      }
+    },
     hero_image {
       asset->
     }
