@@ -28,6 +28,11 @@ const event = {
       title: 'Date/Time'
     },
     {
+      name: 'timezone',
+      type: 'string',
+      title: 'Timezone',
+    },
+    {
       name: 'titledLink',
       type: 'object',
       title: 'Link',
