@@ -72,7 +72,7 @@
   position: absolute;
   top: 0;
   left: 100px;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -92,12 +92,12 @@
   left: 0px;
   right: 0px;
   height: 400px;
+  mix-blend-mode: multiply;
 }
 
 .recent .background .shelf {
   background: transparent linear-gradient(180deg, var(--unnamed-color-ffffff) 0%, #DBDBDB 100%) 0% 0% no-repeat padding-box;
   background: transparent linear-gradient(180deg, #FFFFFF 0%, #DBDBDB 100%) 0% 0% no-repeat padding-box;
-  mix-blend-mode: multiply;
   height: 200px;
   width: 100%;
   position: absolute;

@@ -18,13 +18,13 @@
   height: 640px;
   width: 450px;
   position: relative;
+  z-index: 1;
 }
 
 .cover_image {
   mix-blend-mode: multiply;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  transition: filter 250ms ease-out, -webkit-filter 250ms ease-out, mix-blend-mode 250ms ease-out;
 }
 
 .item:hover {

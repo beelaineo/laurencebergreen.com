@@ -85,7 +85,7 @@ export default function Homepage({ homepage }: Props) {
           </h3>
         </section>
         <section className={styles.recent}>
-          <Parallax speed={-10} style={{zIndex: 1}}>
+          <Parallax speed={-10} style={{zIndex: 2}}>
             <h2>Recent Publications</h2>
           </Parallax>
             <div className={styles.books}>

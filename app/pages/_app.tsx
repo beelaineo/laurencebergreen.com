@@ -4,7 +4,6 @@ import localFont from '@next/font/local'
 import Header from '../components/header'
 import Menu from '../components/menu'
 import Footer from '../components/footer'
-import sanityClient from '../sanityClient'
 import { ParallaxProvider } from 'react-scroll-parallax'
 
 const boogy = localFont({ src: '../fonts/Boogy_Brut_Poster_WEB-White.woff2' })

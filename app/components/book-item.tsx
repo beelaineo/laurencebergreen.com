@@ -6,6 +6,7 @@ import Img from 'next/image'
 import { useNextSanityImage, UseNextSanityImageProps } from 'next-sanity-image'
 import sanityClient from '../sanityClient'
 import { Parallax } from 'react-scroll-parallax'
+import BookCoverBG from './cover-bg'
 
 interface BookItemProps {
   book: BookType
@@ -29,6 +30,7 @@ const BookItem = ({ book }: BookItemProps) => {
           style={{ objectFit: 'contain' }}
           className={styles.cover_image}
         />
+        <BookCoverBG color={'rgba(142, 45, 45, 1)'} />
       </div>
       <Parallax speed={-5} className={styles.info}>
         <h3>{formattedTitle}</h3>
