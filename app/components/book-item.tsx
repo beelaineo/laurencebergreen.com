@@ -3,6 +3,7 @@ const { useState } = React
 import { Book as BookType } from '../sanity-schema'
 import styles from '../styles/BookItem.module.css'
 import Img from 'next/image'
+import Image from 'next/image'
 import { useNextSanityImage, UseNextSanityImageProps } from 'next-sanity-image'
 import sanityClient from '../sanityClient'
 import { Parallax } from 'react-scroll-parallax'
@@ -31,6 +32,9 @@ const BookItem = ({ book }: BookItemProps) => {
           className={styles.cover_image}
         />
         <BookCoverBG color={'rgba(142, 45, 45, 1)'} />
+        <div className={styles.cover_shadow}>
+          <Image src="/book_shadow.png" alt="Book Cover Shadow" fill />
+        </div>
       </div>
       <Parallax speed={-5} className={styles.info}>
         <h3>{formattedTitle}</h3>
