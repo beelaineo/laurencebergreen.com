@@ -11,6 +11,7 @@ import EventItem from '../components/event-item'
 import NewsItem from '../components/news-item'
 import Arrow from '../components/icon-arrow'
 import { Parallax } from 'react-scroll-parallax'
+import { motion } from "framer-motion"
 import React, {useRef, useEffect} from 'react'
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T
@@ -32,6 +33,10 @@ interface EventType {
 export default function Homepage({ homepage }: Props) {
   console.log('homepage doc', homepage)
 
+  const [loading, setLoading] = React.useState(true)
+  const [showImage, setShowImage] = React.useState(false)
+  const [showSticker, setShowSticker] = React.useState(false)
+
   const heroImg: UseNextSanityImageProps = useNextSanityImage(
 		sanityClient,
 		homepage.hero_image
@@ -43,6 +48,47 @@ export default function Homepage({ homepage }: Props) {
   const degree = arc / stickerChars.length
   const radius = 220
 
+  useEffect(() => {
+    const loadingTimer = setTimeout(() => {setLoading(false), 1000})
+    const imageTimer = setTimeout(() => {setShowImage(true), 2000})
+    const stickerTimer = setTimeout(() => {setShowSticker(true), 5000})
+    return () => {
+      clearTimeout(loadingTimer)
+      clearTimeout(imageTimer)
+      clearTimeout(stickerTimer)
+    }
+  }, [])
+
+useEffect(() => {
+  console.log('loading:', loading, )
+}, [loading])
+useEffect(() => {
+  console.log('showImage:', showImage)
+}, [showImage])
+useEffect(() => {
+  console.log('showSticker:', showSticker)
+}, [showSticker])
+
+
+  const heroVariants = {
+    hidden: { opacity: 0, y: -16 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.25
+      }
+    },
+  }
+  const headingVariant = {
+    hidden: { opacity: 0, y: 0 },
+    show: {
+      opacity: 1,
+      y: -16, 
+    },
+  }
+
   return (
     <>
       <Head>
@@ -53,6 +99,7 @@ export default function Homepage({ homepage }: Props) {
       </Head>
       <main className={styles.main}>
         <section className={styles.hero}>
+        {showImage == true && (
           <Img
             src={heroImg.src}
             loader={heroImg.loader}
@@ -62,14 +109,17 @@ export default function Homepage({ homepage }: Props) {
             className={styles.hero_image}
             style={{ objectFit: 'cover' }}
           />
+        )}
           <Parallax speed={-20}>
-            <div className={styles.hero_text}>
+            <motion.div animate={loading ? "hidden" : "show"} variants={heroVariants} className={styles.hero_text}>
               <h1>
                 {heroTextRows.map ((line: string, index: number) => (
-                  <p key={index}>{line}</p>
-                ))}</h1>
-            </div>
+                  <motion.p variants={headingVariant} key={index}>{line}</motion.p>
+                ))}
+              </h1>
+            </motion.div>
           </Parallax>
+          {showSticker == true && (
           <h3 className={styles.sticker}>
             {stickerChars.map((char: string, i: number) => (
               <span
@@ -83,6 +133,7 @@ export default function Homepage({ homepage }: Props) {
               </span>
             ))}
           </h3>
+          )}
         </section>
         <section className={styles.recent}>
           <Parallax speed={-10} style={{zIndex: 2}}>

@@ -21,6 +21,11 @@
 .hero_text h1 {
   text-transform: uppercase;
   font-family: var(--font-serif);
+  transition: opacity 250ms ease-out;
+}
+
+.hero_text p {
+  transition: opacity 250ms ease-out;
 }
 
 .hero_image {
@@ -29,6 +34,8 @@
   position: absolute;
   z-index: -1;
   mix-blend-mode: multiply; 
+  opacity: 0;
+  animation: 1s ease-out 500ms forwards fadeIn;
 }
 
 .sticker {
@@ -41,7 +48,8 @@
   position: absolute;
   right: 50px;
   top: 450px;
-  animation: spin 10s linear infinite;
+  animation: 10s ease-out 1s forwards infinite spin, 1s ease-out 3s forwards fadeIn;
+  opacity: 0;
   width: 440px;
   height: 440px;
   transform-origin: center;
@@ -49,6 +57,15 @@
 
 .sticker span {
   position: absolute;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 
 @keyframes spin {
