@@ -28,10 +28,21 @@ const NewsItem = ({ post }: NewsItemProps) => {
             loader={imgProps.loader}
             alt="hero image"
             fill
-            style={{ objectFit: 'contain' }}
             className={styles.cover_image}
           />
         )}
+         <style jsx>{`
+          .cover-bg {
+            position: absolute;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(142, 45, 45, 1);
+          }
+        `}</style>
+        <div className="cover-bg"></div>
         {link && (
         <div className={styles.share_btn}>
           <LinkIcon />
