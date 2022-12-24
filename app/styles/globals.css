@@ -70,7 +70,7 @@ img {
   position: fixed;
   top: 4rem;
   right: 2rem;
-  z-index: 2;
+  z-index: 10;
 }
 
 .menu-toggle:before, .menu-toggle:after {

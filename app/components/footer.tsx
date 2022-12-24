@@ -24,13 +24,21 @@ export default function Footer() {
   useEffect(() => {
     async function fetchData() {
       const ss = await sanityClient.fetch(`*[_type == "settings"][0]{
-        ...,
+        copyright,
+        credit {
+          text,
+          url
+        },
+        socials_title,
+        socials[] {
+          title,
+          url
+        },
         footer_links[] {
           title,
           'slug': coalesce(page->slug.current, '')
         }
       }`)
-      console.log(ss)
       setSettings(ss)
     }
     fetchData()

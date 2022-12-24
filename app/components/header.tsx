@@ -1,16 +1,17 @@
 import * as React from 'react'
+import { useMenu } from '../providers/menu-provider'
 const { useState } = React
 
+
 const Header = () => {
-  const [isOpen, setOpen] = useState(false)
+  const { menuIsOpen, toggleMenu } = useMenu()
   const handleClick = () => {
-    setOpen(!isOpen)
-    console.log(open)
+    toggleMenu()
   }
   return (
     <>
       <header>
-        <button className={`menu-toggle${isOpen ? ' active' : ''}`} onClick={handleClick} />
+        <button className={`menu-toggle${menuIsOpen ? ' active' : ''}`} onClick={handleClick} />
       </header>
     </>
   )
