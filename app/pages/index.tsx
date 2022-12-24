@@ -141,7 +141,7 @@ useEffect(() => {
           </Parallax>
             <div className={styles.books}>
               {homepage.books.map((book: BookType) => (
-                  <BookItem key={book._id} book={book} />
+                  <BookItem key={book._id} book={book} view="home" />
               ))}
             </div>
           <div className={styles.background}>

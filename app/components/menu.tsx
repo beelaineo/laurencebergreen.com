@@ -44,7 +44,7 @@ export default function Menu() {
       <div className={styles.wrapper}>
         <nav className={styles.nav}>
           {settings?.nav_links.map((item: SanityKeyed<NavLinkType>, i: number) => (
-            <Link key={i} href={`/${item.slug}`} target="_blank">{item.title}</Link>
+            <Link key={i} href={item.slug}>{item.title}</Link>
             )
           )}
         </nav>

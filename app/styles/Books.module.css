@@ -1,0 +1,50 @@
+.main {
+  padding: 0;
+}
+
+.main h1 {
+  margin-left: 100px;
+  margin-top: 0px;
+}
+
+.books_grid {
+  margin-top: 100px;
+  width: 100%;
+}
+
+.row {
+  position: relative;
+  padding-top: 150px;
+}
+
+.books_grid .books {
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  column-gap: 4rem;
+  margin-left: 100px;
+}
+
+.books_grid .background {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 400px;
+  mix-blend-mode: multiply;
+}
+
+.books_grid .background .shelf {
+  background: transparent linear-gradient(180deg, var(--unnamed-color-ffffff) 0%, #DBDBDB 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #FFFFFF 0%, #DBDBDB 100%) 0% 0% no-repeat padding-box;
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  pointer-events: none;
+}
+
+.books_grid .background .shelf:first-child {
+  bottom: 200px;
+}
