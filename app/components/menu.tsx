@@ -5,6 +5,7 @@ import { useMenu } from '../providers/menu-provider'
 import sanityClient from '../sanityClient'
 import { SanityKeyed } from 'sanity-codegen'
 import { Book as BookType } from '../sanity-schema'
+import { useRouter } from 'next/router'
 
 const { useEffect, useState } = React
 
@@ -16,7 +17,8 @@ interface NavLinkType {
 export default function Menu() {
   const [settings, setSettings] = useState(null)
   const [books, setBooks] = useState(null)
-  const { menuIsOpen, toggleMenu } = useMenu()
+  const { menuIsOpen, closeMenu } = useMenu()
+  const { asPath } = useRouter()
 
   useEffect(() => {
     async function fetchData() {
@@ -39,6 +41,10 @@ export default function Menu() {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    closeMenu()
+  }, [asPath])
+
   return (
     <div className={([styles.menu, menuIsOpen ? styles.open : '']).join(" ")}>
       <div className={styles.wrapper}>
@@ -50,14 +56,14 @@ export default function Menu() {
         </nav>
         <div className={styles.books}>
           {books?.map((item: SanityKeyed<BookType>, i: number) => (
-            <Link key={i} href={`/${item.slug}`}>{item.title}</Link>
+            <Link key={i} href={`/books/${item.slug}`}>{item.title}</Link>
             )
           )}
         </div>
         <div className={styles.books}>
           <h3>Young Adult Books</h3>
           {books?.map((item: SanityKeyed<BookType>, i: number) => (
-            <Link key={i} href={`/${item.slug}`}>{item.title}</Link>
+            <Link key={i} href={`/books/${item.slug}`}>{item.title}</Link>
             )
           )}
         </div>

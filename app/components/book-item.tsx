@@ -67,7 +67,7 @@ const BookItem = ({ book, view }: BookItemProps) => {
         <h3>{formatTitle(title)}</h3>
         {view === 'books' && (
           <div className={styles.options}>
-            <Link href={`/${slug.current}`}>Info</Link>
+            <Link href={`/books/${slug.current}`}>Info</Link>
             {buy_link && <a href={buy_link} target="_blank" rel="noreferrer">Buy the Book</a>}
           </div>
         )}
