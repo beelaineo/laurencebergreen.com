@@ -31,8 +31,6 @@ interface EventType {
 }
 
 export default function Homepage({ homepage }: Props) {
-  console.log('homepage doc', homepage)
-
   const [loading, setLoading] = React.useState(true)
   const [showImage, setShowImage] = React.useState(false)
   const [showSticker, setShowSticker] = React.useState(false)
@@ -59,15 +57,15 @@ export default function Homepage({ homepage }: Props) {
     }
   }, [])
 
-useEffect(() => {
-  console.log('loading:', loading, )
-}, [loading])
-useEffect(() => {
-  console.log('showImage:', showImage)
-}, [showImage])
-useEffect(() => {
-  console.log('showSticker:', showSticker)
-}, [showSticker])
+// useEffect(() => {
+//   console.log('loading:', loading, )
+// }, [loading])
+// useEffect(() => {
+//   console.log('showImage:', showImage)
+// }, [showImage])
+// useEffect(() => {
+//   console.log('showSticker:', showSticker)
+// }, [showSticker])
 
 
   const heroVariants = {

@@ -23,8 +23,10 @@ interface BookPageProps {
 }
 
 export default function Book ({ book }: BookPageProps) {
-  
+  if (!book) return <NotFound />
+
   const { title, slug, intro, cover, color, date, visit, accolades, publishers, buy_link, sellers, reviews, excerpt, gallery, links } = book
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const coverImage: UseNextSanityImageProps = useNextSanityImage(
 		sanityClient,
 		cover
@@ -32,7 +34,6 @@ export default function Book ({ book }: BookPageProps) {
 
   const formattedDate = new Date(date).toLocaleDateString('en-US', {'month': 'long', 'day': 'numeric', 'year': 'numeric'})
   const bookColor = color ? color : '#8E2D2D';
-
   return (
     <>
       <style jsx global>{`

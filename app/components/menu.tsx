@@ -44,7 +44,7 @@ export default function Menu() {
 
   useEffect(() => {
     closeMenu()
-  }, [asPath])
+  }, [asPath, closeMenu])
 
   return (
     <div className={([styles.menu, menuIsOpen ? styles.open : '']).join(" ")}>
