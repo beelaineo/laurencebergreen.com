@@ -11,7 +11,6 @@ const MenuProvider = ({ children }: MenuProviderProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen)
-    console.log('menu is open', menuIsOpen)
   }
   const closeMenu = () => {
     setMenuIsOpen(false)

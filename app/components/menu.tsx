@@ -46,8 +46,6 @@ export default function Menu() {
     closeMenu()
   }, [asPath])
 
-  console.log('MENU SETTINGS', settings)
-
   return (
     <div className={([styles.menu, menuIsOpen ? styles.open : '']).join(" ")}>
       <div className={styles.wrapper}>

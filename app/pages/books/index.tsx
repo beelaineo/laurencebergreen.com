@@ -54,12 +54,6 @@ export default function BooksIndex({ books }: BooksIndexProps) {
 
     return resultArray
   }, [])
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    console.log('loading:', loading, )
-    console.log(booksRows)
-  }, [loading, booksRows])
   
   return (
     <>

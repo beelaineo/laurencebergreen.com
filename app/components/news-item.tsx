@@ -17,7 +17,6 @@ const NewsItem = ({ post }: NewsItemProps) => {
 		sanityClient,
 		cover
 	)
-  console.log('imgProps', imgProps)
 
   return (
     <div className={styles.item}>
