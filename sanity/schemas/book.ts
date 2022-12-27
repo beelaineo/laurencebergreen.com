@@ -48,6 +48,19 @@ export default {
       title: 'Date Published'
     },
     {
+      name: 'category',
+      type: 'string',
+      title: 'Book Type',
+      initialValue: 'book',
+      options: {
+        list: [
+          {title: 'Book', value: 'book'},
+          {title: 'Young Adult Book', value: 'ya_book'}
+        ],
+        layout: 'radio'
+      }
+    },
+    {
       name: 'buy_link',
       type: 'url',
       title: 'Buy Link (default)',

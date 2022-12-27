@@ -33,7 +33,22 @@ export default function BooksIndex({ books }: BooksIndexProps) {
 
   if (!books) return <NotFound />
 
-  const booksRows = books.reduce((resultArray, item, index) => { 
+  const booksPrimary = books?.filter((item: BookType) => item.category == 'book' )
+  const booksYA = books?.filter((item: BookType) => item.category == 'ya_book' )
+
+  const booksRows = booksPrimary.reduce((resultArray, item, index) => { 
+    const chunkIndex = Math.floor(index/2)
+
+    if(!resultArray[chunkIndex]) {
+      resultArray[chunkIndex] = []
+    }
+
+    resultArray[chunkIndex].push(item)
+
+    return resultArray
+  }, [])
+
+  const booksRowsYA = booksYA.reduce((resultArray, item, index) => { 
     const chunkIndex = Math.floor(index/2)
 
     if(!resultArray[chunkIndex]) {
@@ -58,6 +73,22 @@ export default function BooksIndex({ books }: BooksIndexProps) {
         </Parallax>
         <section className={styles.books_grid}>
           {booksRows.map((row: BookType[], i: number) => (
+            <div className={styles.row} key={i}>
+              <div className={styles.books}>
+                {row.map((book: BookType) => (
+                    <BookItem key={book._id} book={book} view="books" />
+                ))}
+              </div>
+              <div className={styles.background}>
+                <div className={styles.shelf}></div>
+                <div className={styles.shelf}></div>
+              </div>
+            </div>
+          ))}
+        </section>
+        <section className={styles.books_grid + ' ' + styles.ya_books}>
+          <h2>Young Adult Books</h2>
+          {booksRowsYA.map((row: BookType[], i: number) => (
             <div className={styles.row} key={i}>
               <div className={styles.books}>
                 {row.map((book: BookType) => (

@@ -85,6 +85,13 @@ export interface Book extends SanityDocument {
   date?: string;
 
   /**
+   * Book Type — `string`
+   *
+   *
+   */
+  category?: "book" | "ya_book";
+
+  /**
    * Buy Link (default) — `url`
    *
    *

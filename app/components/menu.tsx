@@ -32,6 +32,7 @@ export default function Menu() {
         sanityClient.fetch(`*[_type == "book"]{
           title,
           "slug": slug.current,
+          category,
           date
         }`)
       ])
@@ -55,14 +56,14 @@ export default function Menu() {
           )}
         </nav>
         <div className={styles.books}>
-          {books?.map((item: SanityKeyed<BookType>, i: number) => (
+          {books?.filter((item: SanityKeyed<BookType>) => item.category == 'book' ).map((item: SanityKeyed<BookType>, i: number) => (
             <Link key={i} href={`/books/${item.slug}`}>{item.title}</Link>
             )
           )}
         </div>
         <div className={styles.books}>
           <h3>Young Adult Books</h3>
-          {books?.map((item: SanityKeyed<BookType>, i: number) => (
+          {books?.filter((item: SanityKeyed<BookType>) => item.category == 'ya_book' ).map((item: SanityKeyed<BookType>, i: number) => (
             <Link key={i} href={`/books/${item.slug}`}>{item.title}</Link>
             )
           )}
