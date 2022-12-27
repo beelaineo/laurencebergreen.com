@@ -31,38 +31,45 @@ export default function Book ({ book }: BookPageProps) {
 	)
 
   const formattedDate = new Date(date).toLocaleDateString('en-US', {'month': 'long', 'day': 'numeric', 'year': 'numeric'})
+  const bookColor = color ? color : '#8E2D2D';
 
   return (
     <>
       <style jsx global>{`
         body {
-          background-color: ${color};
+          background-color: ${bookColor};
         }
       `}</style>
-      <section className={styles.hero}>
-        <Parallax speed={-20} style={{zIndex: 2}}>
-        <h1>{title}</h1>
-        </Parallax>
-        <div className={styles.cover_wrapper}>
-          <Img
-            src={coverImage.src}
-            loader={coverImage.loader}
-            alt="hero image"
-            fill
-            style={{ objectFit: 'contain' }}
-            className={styles.cover_image}
-          />
-          <BookCoverBG color={color} />
-      </div>
-      </section>
-      <section className={styles.intro}>
-        <PortableText value={intro} />
-      </section>
-      <section className={styles.meta}>
-        <div className={styles.date}>
-          <h4>Publish Date</h4>
-          {formattedDate}
+      {cover && title && (
+        <section className={styles.hero}>
+          <Parallax speed={-20} style={{zIndex: 2}}>
+          <h1>{title}</h1>
+          </Parallax>
+          <div className={styles.cover_wrapper}>
+            <Img
+              src={coverImage.src}
+              loader={coverImage.loader}
+              alt="hero image"
+              fill
+              style={{ objectFit: 'contain' }}
+              className={styles.cover_image}
+            />
+            <BookCoverBG color={bookColor} />
         </div>
+        </section>
+      )}
+      {intro && intro.length > 0 && (
+        <section className={styles.intro}>
+          <PortableText value={intro} />
+        </section>
+      )}
+      <section className={styles.meta}>
+        {date && (
+          <div className={styles.date}>
+            <h4>Publish Date</h4>
+            {formattedDate}
+          </div>
+        )}
         {publishers?.length > 0 && (
           <div className={styles.publishers}>
             <h4>Publishers</h4>
@@ -81,31 +88,33 @@ export default function Book ({ book }: BookPageProps) {
           <a href={visit.url}>{visit.title}</a>
         </section>
       )}
-      <section className={styles.buy}>
-        <Parallax speed={-5} style={{zIndex: 2}}>
-        <h2>Buy the Book</h2>
-        </Parallax>
-        <div className={styles.grid}>
-          <div className={styles.hc}>
-            <h3>Hardcover</h3>
-            {sellers?.filter((s)=>s.category == 'hardcover').map((seller) => (
-              <a key={seller._key} href={seller.url} target="_blank" rel="noreferrer">{seller.title}</a>
-            ))}
+      {sellers && sellers.length > 0 && (
+        <section className={styles.buy}>
+          <Parallax speed={-5} style={{zIndex: 2}}>
+          <h2>Buy the Book</h2>
+          </Parallax>
+          <div className={styles.grid}>
+            <div className={styles.hc}>
+              <h3>Hardcover</h3>
+              {sellers?.filter((s)=>s.category == 'hardcover').map((seller) => (
+                <a key={seller._key} href={seller.url} target="_blank" rel="noreferrer">{seller.title}</a>
+              ))}
+            </div>
+            <div className={styles.pb}>
+              <h3>Paperback</h3>
+              {sellers?.filter((s)=>s.category == 'paperback').map((seller) => (
+                <a key={seller._key} href={seller.url} target="_blank" rel="noreferrer">{seller.title}</a>
+              ))}
+            </div>
+            <div className={styles.eb}>
+              <h3>Ebook</h3>
+              {sellers?.filter((s)=>s.category == 'ebook').map((seller) => (
+                <a key={seller._key} href={seller.url} target="_blank" rel="noreferrer">{seller.title}</a>
+              ))}
+            </div>
           </div>
-          <div className={styles.pb}>
-            <h3>Paperback</h3>
-            {sellers?.filter((s)=>s.category == 'paperback').map((seller) => (
-              <a key={seller._key} href={seller.url} target="_blank" rel="noreferrer">{seller.title}</a>
-            ))}
-          </div>
-          <div className={styles.eb}>
-            <h3>Ebook</h3>
-            {sellers?.filter((s)=>s.category == 'ebook').map((seller) => (
-              <a key={seller._key} href={seller.url} target="_blank" rel="noreferrer">{seller.title}</a>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
       {reviews && reviews.length > 0 && (
         <section className={styles.reviews}>
           <Parallax speed={-5} style={{zIndex: 2}}>
