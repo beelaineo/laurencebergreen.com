@@ -1,0 +1,262 @@
+.hero {
+  margin: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hero h1 {
+  font-size: 250px;
+  line-height: 230px;
+  letter-spacing: 16px;
+  margin-bottom: 0;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.cover_wrapper {
+  height: 960px;
+  height: 1050px;
+  position: relative;
+  z-index: 0;
+}
+
+.cover_image {
+  mix-blend-mode: multiply;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  transition: filter 500ms ease-out, -webkit-filter 500ms ease-out, mix-blend-mode 500ms ease-out;
+}
+
+.cover_wrapper:hover {
+  z-index: 3;
+}
+
+.cover_wrapper .cover_image {
+  transition: transform 500ms ease-out;
+}
+
+.cover_wrapper:hover .cover_image {
+  transform: translateY(-10px);
+}
+
+.cover_wrapper:hover .cover_image {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  mix-blend-mode: unset;
+}
+
+.intro {
+  margin: 100px 175px 100px 600px;
+}
+
+.intro p {
+  font-size: 70px;
+  font-family: var(--font-serif);
+  line-height: 80px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+
+.intro p:first-of-type {
+  margin-top: 0px;
+}
+
+.meta {
+  font-family: var(--font-sans);
+  color: #00000080;
+  font-size: 40px;
+  line-height: 50px;
+  white-space: pre-wrap;
+  margin: 400px 150px 100px 150px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+
+.meta h4 {
+  color: #000;
+  font-family: var(--font-sans);
+}
+
+.meta .date, .meta .publishers {
+  width: 600px;
+  align-self: end;
+}
+
+.meta .accolades {
+  width: 915px;
+  align-self: start;
+  margin-left: 650px;
+}
+
+.visit {
+  margin: 150px 150px 100px 100px;
+}
+
+.visit a {
+  width: 100%;
+  background-color: #00000009;
+  color: #000;
+  font-size: 60px;
+  line-height: 70px;
+  display: inline-block;
+  text-align: center;
+  padding: 50px 125px;
+  transition: background-color 250ms ease-out;
+}
+
+.visit a:hover {
+  background-color: #00000033;
+}
+
+.buy {
+  margin: 400px 150px 0px 175px;
+  min-height: 300px;
+  background-color: #00000017;
+  position: relative;
+  padding: 200px 50px 250px 50px;
+}
+
+.buy h2 {
+  position: absolute;
+  left: -75px;
+  top: -250px;
+}
+
+.buy .grid {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 50px;
+}
+
+.buy h3 {
+  font-size: 75px;
+  text-transform: uppercase;
+  line-height: 80px;
+  letter-spacing: 7.5px;
+  margin-bottom: 25px;
+}
+
+.buy .grid > div {
+  border-left: 2px solid #fff;
+  padding-left: 50px;
+}
+
+.buy .grid a {
+  font-size: 40px;
+  line-height: 50px;
+  color: #000;
+  text-decoration: underline;
+  display: block;
+}
+
+.reviews {
+  position: relative;
+  width: 100%;
+  margin-top: 250px;
+}
+
+.reviews h2 {
+  position: absolute;
+  left: 100px;
+  top: -100px;
+}
+
+.reviews .arrow_icon svg {
+  display: block;
+  position: absolute;
+  height: 100px;
+  top: 25px;
+  right: 100px;
+  z-index: 4;
+}
+
+.reviews .grid {
+  display: flex;
+  flex-direction: row;
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 200px;
+  column-gap: 250px;
+  overflow-x: scroll;
+}
+
+.excerpt {
+  margin-top: 300px;
+}
+
+.excerpt h2 {
+  margin-left: 100px;
+  margin-top: -50px;
+}
+
+.excerpt .text_wrapper {
+  margin: 50px 275px 50px 250px;
+}
+.excerpt .text_wrapper p {
+ font-size: 40px;
+ letter-spacing: 2px;
+ line-height: 50px;
+ color: #000; 
+}
+
+.excerpt .text_wrapper .text_more {
+  display: none;
+}
+
+.gallery {
+  margin-top: 350px;
+  position: relative;
+  width: 100%;
+}
+
+.gallery h2 {
+  position: absolute;
+  left: 100px;
+  top: -75px;
+  z-index: 2;
+}
+
+.gallery .arrow_icon svg {
+  display: block;
+  position: absolute;
+  height: 100px;
+  top: 25px;
+  right: 100px;
+  z-index: 4;
+}
+
+.gallery .grid {
+  display: flex;
+  flex-direction: row;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 75px;
+  column-gap: 150px;
+  overflow-x: scroll;
+}
+
+.links {
+  margin-top: 300px;
+}
+
+.links h2 {
+  margin-left: 100px;
+}
+
+.links .list {
+  margin: 100px 275px;
+  display: flex;
+  flex-direction: column;
+}
+
+.links .list a {
+  font-size: 60px;
+  line-height: 80px;
+  color: #000;
+}
+
+.links .list svg {
+  height: 60px;
+}

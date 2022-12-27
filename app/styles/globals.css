@@ -25,6 +25,7 @@ body {
   background: var(--background-color); /* Set background color to the value of the CSS variable --background-color */
   font-family: var(--font-sans);
   font-weight: 200;
+  transition: background 250ms ease-out;
 }
 
 h1, h2, h3, h4, .h1, .h2, .h3, .h4 {

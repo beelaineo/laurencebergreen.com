@@ -1,0 +1,31 @@
+.wrapper {
+  width: 600px;
+  height: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+.image {
+  mix-blend-mode: multiply;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  transition: filter 500ms ease-out, -webkit-filter 500ms ease-out, mix-blend-mode 500ms ease-out;
+}
+
+.gallery_item:hover {
+  z-index: 3;
+}
+
+.wrapper .image, .wrapper div {
+  transition: transform 500ms ease-out;
+}
+
+.gallery_item:hover .image, .gallery_item:hover div {
+  transform: translateY(-10px);
+}
+
+.gallery_item:hover .image {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  mix-blend-mode: unset;
+}
