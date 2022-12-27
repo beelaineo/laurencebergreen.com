@@ -26,11 +26,6 @@ export default function BooksIndex({ books }: BooksIndexProps) {
     }
   }, [])
 
-  useEffect(() => {
-    console.log('loading:', loading, )
-    console.log(booksRows)
-  }, [loading])
-
   if (!books) return <NotFound />
 
   const booksPrimary = books?.filter((item: BookType) => item.category == 'book' )
@@ -60,6 +55,12 @@ export default function BooksIndex({ books }: BooksIndexProps) {
     return resultArray
   }, [])
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    console.log('loading:', loading, )
+    console.log(booksRows)
+  }, [loading, booksRows])
+  
   return (
     <>
       <Head>

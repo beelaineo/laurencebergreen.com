@@ -19,7 +19,7 @@ import { Parallax } from 'react-scroll-parallax'
 import { visitEachChild } from 'typescript'
 
 interface BookPageProps {
-  book?: BookType
+  book: BookType
 }
 
 export default function Book ({ book }: BookPageProps) {
