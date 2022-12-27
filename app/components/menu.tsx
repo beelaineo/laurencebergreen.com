@@ -44,7 +44,8 @@ export default function Menu() {
 
   useEffect(() => {
     closeMenu()
-  }, [asPath, closeMenu])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asPath])
 
   return (
     <div className={([styles.menu, menuIsOpen ? styles.open : '']).join(" ")}>
