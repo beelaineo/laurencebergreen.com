@@ -9,6 +9,7 @@ import sanityClient from '../sanityClient'
 import { Parallax } from 'react-scroll-parallax'
 import BookCoverBG from './cover-bg'
 import Link from 'next/link'
+import Router from 'next/router'
 
 interface BookItemProps {
   book: BookType
@@ -43,12 +44,16 @@ const BookItem = ({ book, view }: BookItemProps) => {
     }
   }
 
+  const handleClick = () => {
+    Router.push(`/books/${slug.current}`)
+  }
+
   const imgProps: UseNextSanityImageProps = useNextSanityImage(
 		sanityClient,
 		cover
 	)
   return (
-    <div className={([styles.item, view == 'books' ? styles.listing : styles.home]).join(" ")}>
+    <div className={([styles.item, view == 'books' ? styles.listing : styles.home]).join(" ")} onClick={() => handleClick()}>
       <div className={styles.cover_wrapper}>
         <Img
           src={imgProps.src}
