@@ -26,7 +26,7 @@ export default function Menu() {
         sanityClient.fetch(`*[_type == "settings"][0]{
           nav_links[] {
             title,
-            'slug': coalesce(page->slug.current, '')
+            'slug': route
           }
         }`),
         sanityClient.fetch(`*[_type == "book"]{
@@ -45,6 +45,8 @@ export default function Menu() {
   useEffect(() => {
     closeMenu()
   }, [asPath])
+
+  console.log('MENU SETTINGS', settings)
 
   return (
     <div className={([styles.menu, menuIsOpen ? styles.open : '']).join(" ")}>
