@@ -55,6 +55,7 @@ export default function Book ({ book }: BookPageProps) {
     }
   
     const blockIndex = pt.findIndex((item: any) => item.children.find((i: any) => i._type === 'moreDivider'))
+    if (blockIndex == -1) return pt
     const dividerIndex = pt[blockIndex].children.findIndex((item: any) => item._type === 'moreDivider')
     const ptSlicedBlock = pt.map((item: any, i: number) => i == blockIndex ? sliceChildren(item, dividerIndex) : item)
     return ptSlicedBlock.slice(0, blockIndex + 1)
@@ -173,7 +174,7 @@ export default function Book ({ book }: BookPageProps) {
           </div>
         </section>
       )}
-      {excerpt && (
+      {excerpt && excerpt.text.length > 0 && (
         <section className={styles.excerpt}>
           <Parallax speed={-5} style={{zIndex: 2}}>
             <h2>Book Excerpt</h2>
