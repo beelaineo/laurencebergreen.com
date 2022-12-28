@@ -31,11 +31,11 @@
   z-index: 3;
 }
 
-.cover_wrapper .cover_image {
+.cover_wrapper .cover_image, .cover_wrapper svg  {
   transition: transform 500ms ease-out;
 }
 
-.cover_wrapper:hover .cover_image {
+.cover_wrapper:hover .cover_image, .cover_wrapper:hover svg {
   transform: translateY(-10px);
 }
 
