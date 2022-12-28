@@ -178,15 +178,23 @@ export default {
             },
             {
               name: 'quote',
-              type: 'string',
+              type: 'array',
+              of: [{type: 'block'}],
               title: 'Quote',
               validation: (Rule: { required: () => any; }) => Rule.required()
             },
             {
               name: 'url',
               type: 'url',
-              title: 'URL',
-              validation: (Rule: { required: () => any; }) => Rule.required()
+              title: 'URL'
+            },
+            {
+              name: 'pdf',
+              type: 'file',
+              title: 'PDF',
+              options: {
+                accept: '.pdf'
+              }
             }
           ]
         }
@@ -200,15 +208,28 @@ export default {
         {
           name: 'text',
           type: 'array', 
-          of: [{type: 'block'}],
-          title: 'Text',
-          validation: (Rule: { required: () => any; }) => Rule.required()
-        },
-        {
-          name: 'text_more',
-          type: 'array', 
-          of: [{type: 'block'}],
-          title: 'More Text'
+          of: [
+            {
+              type: 'block',
+              of: [ 
+                {
+                  name: 'moreDivider', 
+                  type: 'object', 
+                  title: 'Read More Divider',
+                  icon: () => '✂️',
+                  fields: [
+                    {
+                      name: 'label',
+                      type: 'string',
+                      title: 'Label',
+                      initialValue: 'More',
+                      validation: (Rule: { required: () => any; }) => Rule.required()
+                    }
+                  ]
+                } 
+              ],
+            } 
+          ],
         }
       ]
     },
