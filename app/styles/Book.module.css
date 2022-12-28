@@ -182,6 +182,15 @@
   overflow-x: scroll;
 }
 
+.reviews .grid::-webkit-scrollbar {
+  display: none;
+}
+
+.reviews .grid {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .excerpt {
   margin-top: 300px;
 }
@@ -239,6 +248,15 @@
   padding-top: 75px;
   column-gap: 150px;
   overflow-x: scroll;
+}
+
+.gallery .grid::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery .grid {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .links {

@@ -1,7 +1,6 @@
 .menu {
   transform: translateY(-100%);
   width: 100%;
-  background-color: #8E2D2D;
   height: 100%;
   max-height: 100vh;
   position: fixed;
@@ -9,6 +8,7 @@
   left: 0;
   transition: 250ms ease;
   z-index: 9;
+  backdrop-filter: blur(25px);
 }
 
 .menu.open {

@@ -102,6 +102,15 @@
   padding-top: 150px;
 }
 
+.recent .books::-webkit-scrollbar {
+  display: none;
+}
+
+.recent .books {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .recent .background {
   position: absolute;
   width: 100%;
@@ -184,4 +193,13 @@
   display: flex;
   column-gap: 6rem;
   padding: 0 180px;
+}
+
+.news .wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.news .wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

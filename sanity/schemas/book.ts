@@ -21,7 +21,7 @@ const titledLink = {
       type: 'file',
       title: 'PDF',
       options: {
-        accept: '.pdf'
+        accept: '.pdf,.mp3'
       }
     }
   ]

@@ -46,7 +46,7 @@ export default function Book ({ book }: BookPageProps) {
   }
 
   const truncate = (pt: SanityBlock[]) => {
-
+    if (!pt) return null
     const sliceChildren = (item: any, dividerIndex: number) => {
       return {
         ...item,
@@ -61,7 +61,7 @@ export default function Book ({ book }: BookPageProps) {
     return ptSlicedBlock.slice(0, blockIndex + 1)
   }
 
-  const truncatedExcerpt = truncate(excerpt.text)
+  const truncatedExcerpt = truncate(excerpt?.text) || null
   
   const ptComponents = {
     types: {
@@ -191,7 +191,7 @@ export default function Book ({ book }: BookPageProps) {
       )}
       {gallery && gallery.images.length > 0 && (
         <section className={styles.gallery}>
-          <Parallax speed={-5} style={{zIndex: 2}}>
+          <Parallax speed={-5} style={{zIndex: 2, position: 'relative'}}>
             <h2>{gallery.title}</h2>
           </Parallax>
           <div className={styles.arrow_icon}>
