@@ -61,7 +61,7 @@ export default function Book ({ book }: BookPageProps) {
     return ptSlicedBlock.slice(0, blockIndex + 1)
   }
 
-  const truncatedExcerpt = truncate(excerpt?.text) || null
+  const truncatedExcerpt = truncate(excerpt?.text)
   
   const ptComponents = {
     types: {
@@ -102,7 +102,7 @@ export default function Book ({ book }: BookPageProps) {
         </div>
         </section>
       )}
-      {intro && intro.length > 0 && (
+      {intro && intro?.length > 0 && (
         <section className={styles.intro}>
           <PortableText value={intro} />
         </section>
@@ -132,7 +132,7 @@ export default function Book ({ book }: BookPageProps) {
           <a href={visit.url}>{visit.title}</a>
         </section>
       )}
-      {sellers && sellers.length > 0 && (
+      {sellers && sellers?.length > 0 && (
         <section className={styles.buy}>
           <Parallax speed={-5} style={{zIndex: 2}}>
           <h2>Buy the Book</h2>
@@ -159,7 +159,7 @@ export default function Book ({ book }: BookPageProps) {
           </div>
         </section>
       )}
-      {reviews && reviews.length > 0 && (
+      {reviews && reviews?.length > 0 && (
         <section className={styles.reviews}>
           <Parallax speed={-5} style={{zIndex: 2}}>
             <h2>Reviews</h2>
@@ -174,7 +174,7 @@ export default function Book ({ book }: BookPageProps) {
           </div>
         </section>
       )}
-      {excerpt && excerpt.text.length > 0 && (
+      {excerpt && excerpt.text?.length > 0 && (
         <section className={styles.excerpt}>
           <Parallax speed={-5} style={{zIndex: 2}}>
             <h2>Book Excerpt</h2>
@@ -189,7 +189,7 @@ export default function Book ({ book }: BookPageProps) {
           </div>
         </section>
       )}
-      {gallery && gallery.images.length > 0 && (
+      {gallery && gallery.images?.length > 0 && (
         <section className={styles.gallery}>
           <Parallax speed={-5} style={{zIndex: 2, position: 'relative'}}>
             <h2>{gallery.title}</h2>
@@ -204,7 +204,7 @@ export default function Book ({ book }: BookPageProps) {
           </div>
         </section>
       )}
-      {links && links.length > 0 && (
+      {links && links?.length > 0 && (
         <section className={styles.links}>
           <Parallax speed={-5} style={{zIndex: 2}}>
             <h2>Links</h2>
