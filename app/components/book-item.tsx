@@ -63,6 +63,14 @@ const BookItem = ({ book, view }: BookItemProps) => {
           style={{ objectFit: 'contain' }}
           className={styles.cover_image}
         />
+        <Img
+          src={imgProps.src}
+          loader={imgProps.loader}
+          alt="hero image"
+          fill
+          style={{ objectFit: 'contain' }}
+          className={styles.cover_image_overlay}
+        />
         <BookCoverBG color={'rgba(142, 45, 45, 1)'} />
         <div className={styles.cover_shadow}>
           <Image src="/book_shadow.png" alt="Book Cover Shadow" fill />

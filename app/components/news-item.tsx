@@ -22,6 +22,7 @@ const NewsItem = ({ post }: NewsItemProps) => {
     <div className={styles.item}>
       <a className={styles.cover_wrapper} href={link ? link : null} target="_blank" rel="noopener, noreferrer">
         {imgProps?.src && (
+          <>
           <Img
             src={imgProps.src}
             loader={imgProps.loader}
@@ -29,6 +30,14 @@ const NewsItem = ({ post }: NewsItemProps) => {
             fill
             className={styles.cover_image}
           />
+          <Img
+            src={imgProps.src}
+            loader={imgProps.loader}
+            alt="hero image"
+            fill
+            className={styles.cover_image_overlay}
+          />
+          </>
         )}
          <style jsx>{`
           .cover-bg {

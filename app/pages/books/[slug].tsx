@@ -99,6 +99,14 @@ export default function Book ({ book }: BookPageProps) {
               className={styles.cover_image}
             />
             <BookCoverBG color={bookColor} />
+            <Img
+              src={coverImage.src}
+              loader={coverImage.loader}
+              alt="hero image"
+              fill
+              style={{ objectFit: 'contain' }}
+              className={styles.cover_image_overlay}
+            />
         </div>
         </section>
       )}

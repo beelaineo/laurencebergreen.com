@@ -16,17 +16,17 @@
 
 .cover_wrapper {
   height: 640px;
-  width: 450px;
+  width: 428px;
   position: relative;
   z-index: 1;
 }
 
 .cover_shadow {
   position: absolute;
-  bottom: -25px;
+  bottom: -50px;
   left: -50px;
   right: -50px;
-  height: 175px;
+  height: 200px;
   z-index: -2;
   transition: transform 500ms ease-out;
 }
@@ -38,6 +38,11 @@
   transition: filter 500ms ease-out, -webkit-filter 500ms ease-out, mix-blend-mode 500ms ease-out;
 }
 
+.cover_image_overlay {
+  opacity: 0;
+  transition: all 500ms ease-out;
+}
+
 .item:hover {
   z-index: 3;
 }
@@ -46,14 +51,12 @@
   transition: transform 500ms ease-out;
 }
 
-.item:hover .cover_image, .item:hover svg {
+.item:hover .cover_image, .item:hover .cover_image_overlay, .item:hover svg {
   transform: translateY(-10px);
 }
 
-.item:hover .cover_image {
-  -webkit-filter: grayscale(0%);
-  filter: grayscale(0%);
-  mix-blend-mode: unset;
+.item:hover .cover_image_overlay {
+  opacity: 1;
 }
 
 .item:hover .cover_shadow {
