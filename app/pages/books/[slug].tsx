@@ -241,6 +241,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     props: {
       book,
     },
+    revalidate: 10
   }
 }
 
