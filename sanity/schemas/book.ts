@@ -15,6 +15,14 @@ const titledLink = {
       name: 'url',
       type: 'url',
       title: 'URL'
+    },
+    {
+      name: 'pdf',
+      type: 'file',
+      title: 'PDF',
+      options: {
+        accept: '.pdf'
+      }
     }
   ]
 }
