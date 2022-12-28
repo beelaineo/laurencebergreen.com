@@ -50,6 +50,14 @@ const GalleryItem = ({ image, caption, color }: GalleryItemProps) => {
           className={styles.image}
         />
         <div className='bg-layer' />
+        <Img
+          src={imgProps.src}
+          loader={imgProps.loader}
+          alt={caption}
+          fill
+          style={{ objectFit: 'cover' }}
+          className={styles.image_overlay}
+        />
       </div>
     </div>
     </>

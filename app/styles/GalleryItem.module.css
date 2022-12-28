@@ -9,7 +9,12 @@
   mix-blend-mode: multiply;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  transition: filter 500ms ease-out, -webkit-filter 500ms ease-out, mix-blend-mode 500ms ease-out;
+  transition: all 500ms ease-out;
+}
+
+.gallery_item .image_overlay {
+  opacity: 0;
+  transition: all 500ms ease-out;
 }
 
 .gallery_item:hover {
@@ -17,15 +22,13 @@
 }
 
 .wrapper .image, .wrapper div {
-  transition: transform 500ms ease-out;
+  transition: all 500ms ease-out;
 }
 
-.gallery_item:hover .image, .gallery_item:hover div {
+.gallery_item:hover .image, .gallery_item:hover .wrapper div, .gallery_item:hover .image_overlay {
   transform: translateY(-10px);
 }
 
-.gallery_item:hover .image {
-  -webkit-filter: grayscale(0%);
-  filter: grayscale(0%);
-  mix-blend-mode: unset;
+.gallery_item:hover .image_overlay {
+  opacity: 1;
 }
