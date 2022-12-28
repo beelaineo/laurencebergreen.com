@@ -186,6 +186,10 @@
   margin-top: 300px;
 }
 
+.excerpt .hidden {
+  display: none;
+}
+
 .excerpt h2 {
   margin-left: 100px;
   margin-top: -50px;

@@ -46,9 +46,9 @@ export default {
     },
     {
       name: 'color',
-      type: 'string',
+      type: 'color',
       title: 'Theme Color',
-      validation: (Rule: { required: () => { regex: { (arg0: RegExp): { (): any; new(): any; warning: { (arg0: string): any; new(): any; }; }; new(): any; }; }}) => Rule.required().regex(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/).warning('Input is required and must be a valid hex code.')
+      validation: (Rule: { required: () => any; }) => Rule.required()
     },
     {
       name: 'date',

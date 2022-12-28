@@ -16,6 +16,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@sanity/color-input": "^3.0.1",
     "@sanity/vision": "^3.0.0",
     "babel-plugin-transform-vite-meta-env": "^1.0.3",
     "react": "^18.2.0",

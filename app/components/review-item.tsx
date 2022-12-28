@@ -1,11 +1,13 @@
+import { PortableText, PortableTextBlockComponent } from '@portabletext/react'
 import * as React from 'react'
+import { SanityBlock, SanityKeyed } from 'sanity-codegen'
 import styles from '../styles/ReviewItem.module.css'
 import LinkIcon from './icon-link'
 
 interface ReviewType {
   _type: "review"
   source?: string
-  quote?: string
+  quote?: Array<SanityKeyed<SanityBlock>>
   url?: string
 }
 
@@ -19,7 +21,7 @@ const ReviewItem = ({ review }: ReviewItemProps) => {
   return (
     <div className={styles.review_item}>
       <h3>{source}</h3>
-      <blockquote>{quote}</blockquote>
+      <blockquote><PortableText value={quote} /></blockquote>
       {url && (
         <div className={styles.link}>
           <a href={url}>

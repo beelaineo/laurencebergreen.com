@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
-import { Book as BookType } from '../../sanity-schema'
+import { Book as BookType, SanityBlock } from '../../sanity-schema'
 import { NotFound } from '../../components/not-found'
 import { PortableText } from '@portabletext/react'
 import styles from '../../styles/Book.module.css'
@@ -16,13 +16,14 @@ import GalleryItem from '../../components/gallery-item'
 import { linkSync } from 'fs'
 import LinkIcon from '../../components/icon-link'
 import { Parallax } from 'react-scroll-parallax'
-import { visitEachChild } from 'typescript'
+import { collapseTextChangeRangesAcrossMultipleVersions, isConstructorDeclaration, visitEachChild } from 'typescript'
 
 interface BookPageProps {
   book: BookType
 }
 
 export default function Book ({ book }: BookPageProps) {
+  const [showExcerpt, setShowExcerpt] = React.useState(false)
   if (!book) return <NotFound />
 
   const { title, slug, intro, cover, color, date, visit, accolades, publishers, buy_link, sellers, reviews, excerpt, gallery, links } = book
@@ -32,8 +33,49 @@ export default function Book ({ book }: BookPageProps) {
 		cover
 	)
 
+  const handleMore = () => {
+    console.log('click more')
+    setShowExcerpt(true)
+  }
+
+  // React component that toggles the visibility of the excerpt
+  const ReadMoreButton = (props:{onClick:()=>void}) => {
+    return (
+        <button className={styles.read_more} onClick={props.onClick}>More</button>
+    )
+  }
+
+  const truncate = (pt: SanityBlock[]) => {
+
+    const sliceChildren = (item: any, dividerIndex: number) => {
+      return {
+        ...item,
+        children: item.children.slice(0, dividerIndex + 1)
+      }
+    }
+  
+    const blockIndex = pt.findIndex((item: any) => item.children.find((i: any) => i._type === 'moreDivider'))
+    const dividerIndex = pt[blockIndex].children.findIndex((item: any) => item._type === 'moreDivider')
+    const ptSlicedBlock = pt.map((item: any, i: number) => i == blockIndex ? sliceChildren(item, dividerIndex) : item)
+    return ptSlicedBlock.slice(0, blockIndex + 1)
+  }
+
+  const truncatedExcerpt = truncate(excerpt.text)
+  
+  const ptComponents = {
+    types: {
+      moreDivider: () => <ReadMoreButton onClick={handleMore} />
+    }
+  }
+
+  const ptComponentsMore = {
+    types: {
+      moreDivider: () => <></>
+    }
+  }
+
   const formattedDate = new Date(date).toLocaleDateString('en-US', {'month': 'long', 'day': 'numeric', 'year': 'numeric'})
-  const bookColor = color ? color : '#8E2D2D';
+  const bookColor = color ? color.hex : '#8E2D2D';
   return (
     <>
       <style jsx global>{`
@@ -137,10 +179,11 @@ export default function Book ({ book }: BookPageProps) {
             <h2>Book Excerpt</h2>
           </Parallax>
           <div className={styles.text_wrapper}>
-            <PortableText value={excerpt.text} />
-            <a className={styles.more_btn}>More</a>
-            <div className={styles.text_more}>
-              <PortableText value={excerpt.text_more} />
+            <div className={!showExcerpt ? styles.show : styles.hidden}>
+              <PortableText value={truncatedExcerpt} components={ptComponents} />
+            </div>
+            <div className={showExcerpt ? styles.show : styles.hidden}>
+              <PortableText value={excerpt.text} components={ptComponentsMore} />
             </div>
           </div>
         </section>
@@ -155,7 +198,7 @@ export default function Book ({ book }: BookPageProps) {
           </div>
           <div className={styles.grid}>
             {gallery.images.map((image) => (
-              <GalleryItem key={image._key} image={image.image} caption={image.caption} color={color} />
+              <GalleryItem key={image._key} image={image.image} caption={image.caption} color={bookColor} />
             ))}
           </div>
         </section>

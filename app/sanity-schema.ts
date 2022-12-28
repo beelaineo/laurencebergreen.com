@@ -71,11 +71,11 @@ export interface Book extends SanityDocument {
   };
 
   /**
-   * Theme Color — `string`
+   * Theme Color — `color`
    *
    *
    */
-  color?: string;
+  color?: Color;
 
   /**
    * Date Published — `date`
@@ -140,6 +140,13 @@ export interface Book extends SanityDocument {
        *
        */
       url?: string;
+
+      /**
+       * PDF — `file`
+       *
+       *
+       */
+      pdf?: { _type: "file"; asset: SanityReference<any> };
     }>
   >;
 
@@ -164,6 +171,13 @@ export interface Book extends SanityDocument {
        *
        */
       url?: string;
+
+      /**
+       * PDF — `file`
+       *
+       *
+       */
+      pdf?: { _type: "file"; asset: SanityReference<any> };
     }>
   >;
 
@@ -236,11 +250,11 @@ export interface Book extends SanityDocument {
       source?: string;
 
       /**
-       * Quote — `string`
+       * Quote — `array`
        *
        *
        */
-      quote?: string;
+      quote?: Array<SanityKeyed<SanityBlock>>;
 
       /**
        * URL — `url`
@@ -248,6 +262,13 @@ export interface Book extends SanityDocument {
        *
        */
       url?: string;
+
+      /**
+       * PDF — `file`
+       *
+       *
+       */
+      pdf?: { _type: "file"; asset: SanityReference<any> };
     }>
   >;
 
@@ -259,18 +280,11 @@ export interface Book extends SanityDocument {
   excerpt?: {
     _type: "excerpt";
     /**
-     * Text — `array`
+     * text — `array`
      *
      *
      */
     text?: Array<SanityKeyed<SanityBlock>>;
-
-    /**
-     * More Text — `array`
-     *
-     *
-     */
-    text_more?: Array<SanityKeyed<SanityBlock>>;
   };
 
   /**
@@ -338,6 +352,13 @@ export interface Book extends SanityDocument {
        *
        */
       url?: string;
+
+      /**
+       * PDF — `file`
+       *
+       *
+       */
+      pdf?: { _type: "file"; asset: SanityReference<any> };
     }>
   >;
 }
@@ -639,4 +660,185 @@ export interface Settings extends SanityDocument {
   >;
 }
 
-export type Documents = Book | Homepage | Post | Settings;
+/**
+ * About
+ *
+ *
+ */
+export interface About extends SanityDocument {
+  _type: "about";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Intro Text — `text`
+   *
+   *
+   */
+  intro?: string;
+
+  /**
+   * Body Text — `array`
+   *
+   *
+   */
+  body?: Array<SanityKeyed<SanityBlock>>;
+
+  /**
+   * Awards — `array`
+   *
+   *
+   */
+  awards?: Array<
+    SanityKeyed<{
+      _type: "award";
+      /**
+       * Title — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Subtitle — `string`
+       *
+       *
+       */
+      subtitle?: string;
+
+      /**
+       * Link — `url`
+       *
+       *
+       */
+      link?: string;
+    }>
+  >;
+
+  /**
+   * Author Bio PDF — `file`
+   *
+   *
+   */
+  bio?: { _type: "file"; asset: SanityReference<any> };
+}
+
+/**
+ * Contact
+ *
+ *
+ */
+export interface Contact extends SanityDocument {
+  _type: "contact";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Inquiry Sections — `array`
+   *
+   *
+   */
+  sections?: Array<
+    SanityKeyed<{
+      _type: "section";
+      /**
+       * Title — `string`
+       *
+       *
+       */
+      title?: string;
+
+      /**
+       * Contact Entries — `array`
+       *
+       *
+       */
+      entries?: Array<
+        SanityKeyed<{
+          _type: "entry";
+          /**
+           * Title — `string`
+           *
+           *
+           */
+          title?: string;
+
+          /**
+           * Email — `string`
+           *
+           *
+           */
+          email?: string;
+        }>
+      >;
+    }>
+  >;
+}
+
+/**
+ * Page
+ *
+ *
+ */
+export interface Page extends SanityDocument {
+  _type: "page";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Body — `array`
+   *
+   *
+   */
+  body?: Array<SanityKeyed<SanityBlock>>;
+}
+
+export type Documents =
+  | Book
+  | Homepage
+  | Post
+  | Settings
+  | About
+  | Contact
+  | Page;
+
+/**
+ * This interface is a stub. It was referenced in your sanity schema but
+ * the definition was not actually found. Future versions of
+ * sanity-codegen will let you type this explicity.
+ */
+type Color = any;
