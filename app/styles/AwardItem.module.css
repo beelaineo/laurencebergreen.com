@@ -1,0 +1,25 @@
+.item {
+border-top: 2px solid #fff;
+padding-bottom: 50px;
+}
+
+.item h3 {
+  font-size: 75px;
+  text-transform: uppercase;
+  letter-spacing: 7.5px;
+  padding-top: 10px;
+  line-height: 80px;
+}
+
+.info {
+  white-space: pre;
+  color: #000;
+  font-size: 40px;
+  padding-top: 20px;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+
+.info span {
+  opacity: 50%;
+}

@@ -1,9 +1,10 @@
 .item {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
-  align-self: flex-end;
   margin-bottom: 50px;
   cursor: pointer;
+  margin-left: 4rem;
+  position: relative;
 }
 
 .item:first-of-type {

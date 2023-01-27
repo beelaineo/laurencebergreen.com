@@ -79,9 +79,9 @@
 
 .recent {
   margin-top: 300px;
-  width: 100%;
   position: relative;
   display: flex;
+  width: 100%;
 }
 
 .recent h2 {
@@ -94,12 +94,10 @@
 }
 
 .recent .books {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  column-gap: 4rem;
-  overflow-x: scroll;
+  display: block;
   padding-top: 250px;
+  white-space: nowrap;
+  overflow-x: scroll;
 }
 
 .recent .books::-webkit-scrollbar {

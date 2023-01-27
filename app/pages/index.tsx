@@ -67,6 +67,21 @@ export default function Homepage({ homepage }: Props) {
 //   console.log('showSticker:', showSticker)
 // }, [showSticker])
 
+// when recent section is at bottom of screen, scroll horizontally to end of books row 
+  const recentRef = useRef(null)
+  const booksRef = useRef(null)
+
+  useEffect(() => {
+    const recentObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        booksRef.current.scrollLeft = booksRef.current.scrollWidth
+      }
+    }, {threshold: 1})
+    recentObserver.observe(recentRef.current)
+    return () => {
+      recentObserver.disconnect()
+    }
+  }, [])
 
   const heroVariants = {
     hidden: { opacity: 0, y: -16 },
@@ -133,11 +148,11 @@ export default function Homepage({ homepage }: Props) {
           </h3>
           )}
         </section>
-        <section className={styles.recent}>
+        <section className={styles.recent} ref={recentRef}>
           <Parallax speed={-10} style={{zIndex: 2}}>
             <h2>Recent Publications</h2>
           </Parallax>
-            <div className={styles.books}>
+            <div className={styles.books} ref={booksRef}>
               {homepage.books.map((book: BookType) => (
                   <BookItem key={book._id} book={book} view="home" />
               ))}
