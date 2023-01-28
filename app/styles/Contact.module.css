@@ -1,0 +1,28 @@
+.heading h1 {
+  margin-left: 100px;
+  margin-top: 0px;
+  pointer-events: none;
+}
+
+.sections {
+  padding-top: 400px;
+  position: relative;
+  width: 100%;
+}
+
+.sections .wrapper {
+  background-color: rgba(0, 0, 0, 0.09);
+  margin: 0 200px;
+  min-height: 480px;
+  padding: 200px 100px 100px 100px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.sections .h2_wrapper {
+  position: absolute;
+  left:100px;
+  top: 200px;
+  max-width: 800px;
+}
