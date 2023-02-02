@@ -9,6 +9,7 @@
   transition: 250ms ease;
   z-index: 9;
   backdrop-filter: blur(30px);
+  background-color: var(--background-color-light);
 }
 
 .menu.open {

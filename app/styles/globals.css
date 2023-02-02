@@ -1,6 +1,7 @@
 :root {
   --foreground-color: rgba(255, 255, 255, 1);
   --background-color: rgba(142, 45, 45, 1);
+  --background-color-light: rgba(142, 45, 45, 0.85);
 }
 
 * {
