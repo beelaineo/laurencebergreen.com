@@ -64,6 +64,10 @@
   column-gap: 3rem;
 }
 
+.wrapper a:hover, .nav a:focus {
+  color: #00000080;
+}
+
 .copyright {
   opacity: 0.5;
 }
