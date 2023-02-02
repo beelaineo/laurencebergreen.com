@@ -56,7 +56,7 @@ export default function Footer() {
       <div className={styles.wrapper}>
         <nav className={styles.nav}>
           {settings?.footer_links.map((item: SanityKeyed<FooterLinkType>, i: number) => (
-            <Link key={i} href={item.slug == '' ? '/' : '/' + item.slug}>{item.title}</Link>
+            <Link key={i} href={item.slug == '' ? '/' : '/pages/' + item.slug}>{item.title}</Link>
           )
           )}
         </nav>

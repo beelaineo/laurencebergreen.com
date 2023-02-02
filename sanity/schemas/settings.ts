@@ -23,7 +23,7 @@ export default {
       of: [
         { 
           type: 'reference',
-          to: [{type: 'homepage'}]
+          to: [{type: 'homepage'}, {type: 'page'}]
         },
         {
           name: 'router-link',
@@ -62,7 +62,7 @@ export default {
               name: 'page',
               type: 'reference',
               title: 'Reference',
-              to: [{type: 'homepage'}]
+              to: [{type: 'homepage'}, {type: 'page'}]
             },
           ]
         }

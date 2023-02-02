@@ -1,0 +1,32 @@
+.heading h1 {
+  margin-left: 100px;
+  margin-top: 0px;
+  pointer-events: none;
+}
+
+.body {
+  margin: 300px 100px 100px 600px;
+  z-index: 1;
+  pointer-events: none;
+  color: #000;
+  font-size: 60px;
+  line-height: 70px;
+  display: inline-block;
+  transition: background-color 250ms ease-out;
+}
+
+.body h2 {
+  font-size: 75px;
+  letter-spacing: 7.5px;
+  margin-bottom: 0px;
+  color: #fff;
+}
+
+.body p {
+  margin-bottom: 60px;
+
+}
+
+.body p:last-of-type {
+  margin-bottom: 0px;
+}
