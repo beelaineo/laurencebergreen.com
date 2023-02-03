@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Book as BookType, SanityBlock } from '../../sanity-schema'
 import { NotFound } from '../../components/not-found'
 import { PortableText } from '@portabletext/react'
+import type { PortableTextBlock } from '@portabletext/types'
 import styles from '../../styles/Book.module.css'
 import sanityClient from '../../sanityClient'
 import Img from 'next/image'
@@ -26,12 +27,22 @@ export default function Book ({ book }: BookPageProps) {
   const [showExcerpt, setShowExcerpt] = React.useState(false)
   if (!book) return <NotFound />
 
-  const { title, slug, intro, cover, color, date, visit, accolades, publishers, buy_link, sellers, reviews, excerpt, gallery, links } = book
+  const { title, slug, intro, intro_gallery, cover, color, date, visit, accolades, publishers, buy_link, sellers, reviews, excerpt, gallery, links } = book
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const coverImage: UseNextSanityImageProps = useNextSanityImage(
 		sanityClient,
 		cover
 	)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const introImage1: UseNextSanityImageProps = (intro_gallery && intro_gallery[0]) ? useNextSanityImage(
+    sanityClient,
+    intro_gallery[0]
+  ) : null
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const introImage2: UseNextSanityImageProps = (intro_gallery && intro_gallery[0]) ? useNextSanityImage(
+		sanityClient,
+		intro_gallery[1]
+	) : null
 
   const handleMore = () => {
     console.log('click more')
@@ -62,6 +73,9 @@ export default function Book ({ book }: BookPageProps) {
   }
 
   const truncatedExcerpt = truncate(excerpt?.text)
+
+  const IntroBlock1 = intro.slice(0, 1)
+  const IntroBlock2 = intro.slice(1)
   
   const ptComponents = {
     types: {
@@ -112,7 +126,40 @@ export default function Book ({ book }: BookPageProps) {
       )}
       {intro && intro?.length > 0 && (
         <section className={styles.intro}>
-          <PortableText value={intro} />
+          <div className={styles.intro_block}>
+            {IntroBlock1 && IntroBlock1?.length > 0 && (
+              <PortableText value={IntroBlock1} />
+            )}
+            {introImage1 && (
+              <Parallax speed={5} className={!introImage2 ? styles.intro_image_wrapper_single : styles.intro_image_wrapper} style={{backgroundColor: bookColor}}>
+                <Img
+                  src={introImage1.src}
+                  loader={introImage1.loader}
+                  alt="Intro image"
+                  className={styles.intro_image}
+                  width={introImage1.width}
+                  height={introImage1.height}
+                />
+              </Parallax>
+            )}
+          </div>
+          <div className={styles.intro_block}>
+            {IntroBlock2 && IntroBlock2?.length > 0 && (
+              <PortableText value={IntroBlock2} />
+            )}
+            {introImage2 && (
+              <Parallax speed={5} className={styles.intro_image_wrapper} style={{backgroundColor: bookColor}}>
+                <Img
+                  src={introImage2.src}
+                  loader={introImage2.loader}
+                  alt="Intro image"
+                  width={introImage2.width}
+                  height={introImage2.height}
+                  className={styles.intro_image}
+                />
+              </Parallax>
+            )}
+          </div>
         </section>
       )}
       <section className={styles.meta}>
