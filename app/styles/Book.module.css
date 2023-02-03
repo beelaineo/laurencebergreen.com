@@ -89,7 +89,7 @@
 
 .intro_block:nth-child(2) .intro_image_wrapper {
   left: -350px;
-  top: 180px;
+  bottom: -500px;
 }
 
 .intro_image_wrapper {
