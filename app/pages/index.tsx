@@ -12,6 +12,7 @@ import NewsItem from '../components/news-item'
 import Arrow from '../components/icon-arrow'
 import { Parallax } from 'react-scroll-parallax'
 import { motion } from "framer-motion"
+import useWindowDimensions from '../hooks/useWindowDimensions'
 import React, {useRef, useEffect} from 'react'
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T
@@ -34,7 +35,7 @@ export default function Homepage({ homepage }: Props) {
   const [loading, setLoading] = React.useState(true)
   const [showImage, setShowImage] = React.useState(false)
   const [showSticker, setShowSticker] = React.useState(false)
-
+  const { width, height } = useWindowDimensions()
   const heroImg: UseNextSanityImageProps = useNextSanityImage(
 		sanityClient,
 		homepage.hero_image
@@ -44,7 +45,7 @@ export default function Homepage({ homepage }: Props) {
   const stickerChars = homepage.sticker_text.split('')
   const arc = 360
   const degree = arc / stickerChars.length
-  const radius = 220
+  const radius = width < 1024 ? 58 : width < 1920 ? 100 : 220
 
   useEffect(() => {
     const loadingTimer = setTimeout(() => {setLoading(false), 1000})
