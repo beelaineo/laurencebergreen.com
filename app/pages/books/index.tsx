@@ -63,7 +63,7 @@ export default function BooksIndex({ books }: BooksIndexProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Parallax speed={-20}>
+        <Parallax speed={-20} className={styles.heading}>
           <h1>Books</h1>
         </Parallax>
         <section className={styles.books_grid}>
@@ -82,7 +82,9 @@ export default function BooksIndex({ books }: BooksIndexProps) {
           ))}
         </section>
         <section className={styles.books_grid + ' ' + styles.ya_books}>
-          <h2>Young Adult Books</h2>
+          <Parallax speed={-20} className={styles.heading}>
+            <h2>Young Adult Books</h2>
+          </Parallax>
           {booksRowsYA.map((row: BookType[], i: number) => (
             <div className={styles.row} key={i}>
               <div className={styles.books}>
