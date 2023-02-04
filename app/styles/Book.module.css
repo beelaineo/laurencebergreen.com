@@ -1,7 +1,7 @@
 .hero {
   margin: 100px 150px 100px 100px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
 }
 
 .hero h1 {
@@ -14,7 +14,6 @@
 }
 
 .cover_wrapper {
-  height: 960px;
   height: 1050px;
   position: relative;
   z-index: 0;
@@ -273,6 +272,19 @@
  color: #000; 
 }
 
+.excerpt .text_wrapper button {
+  color: #000000BF;
+  font-size: 25px;
+  letter-spacing: 1.25px;
+  font-family: var(--sans);
+  border: none;
+  padding: 0 10px;
+  margin: 0;
+  cursor: pointer;
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
 .excerpt .text_wrapper .text_more {
   display: none;
 }
@@ -340,4 +352,349 @@
 
 .links .list svg {
   height: 60px;
+}
+
+/* BREAKPOINTS */
+@media screen and (max-width: 1919px) {
+  .hero {
+    margin: 75px 100px 100px 75px;
+  }
+  .hero h1 {
+    font-size: 22vh;
+    line-height: 1;
+    letter-spacing: 2vh;
+    margin-bottom: 0;
+  }
+  .cover_wrapper {
+    height: 90vh;
+  }
+  .intro {
+    margin: 300px 150px 100px 500px;
+  }
+  .intro p {
+    font-size: 50px;
+    line-height: 1.25;
+    letter-spacing: 6px;
+    margin-top: 35px;
+  }
+  .intro_block p {
+    margin-bottom: 50px;
+  }
+  .intro_block:nth-child(1) .intro_image_wrapper {
+    right: -150px;
+    bottom: 35px;
+  }
+  .intro_block:nth-child(1) .intro_image_wrapper_single {
+    left: -530px;
+    bottom: -500px;
+  }
+  .intro_block:nth-child(2) .intro_image_wrapper {
+    left: -350px;
+    bottom: -700px;
+  }
+  .intro_image_wrapper {
+    max-width: 550px;
+  }
+  .intro_image_wrapper_single {
+    max-width: 720px;
+  }
+  .meta {
+    font-size: 30px;
+    line-height: 35px;
+    margin: 350px 100px 100px 100px;
+    row-gap: 50px;
+  }
+  .meta .date, .meta .publishers {
+    width: 450px;
+  }
+  .meta .accolades {
+    width: 700px;
+    margin-left: 350px;
+  }
+  .visit {
+    margin: 150px 75px 100px 75px;
+  }
+  .visit a {
+    font-size: 45px;
+    line-height: 50px;
+    padding: 35px 100px;
+  }
+  .buy {
+    margin: 300px 175px 0px 175px;
+    min-height: 250px;
+    padding: 150px 37px 150px 37px;
+  } 
+  .buy h2 {
+    position: absolute;
+    left: -137px;
+    top: -210px;
+  }
+  .buy .grid {
+    padding-right: 37px;
+  }
+  .buy h3 {
+    font-size: 45px;
+    letter-spacing: 2px;
+    line-height: 50px;
+    margin-bottom: 20px;
+  }
+  .buy .grid > div {
+    padding-left: 37px;
+  }
+  .buy .grid a {
+    font-size: 25px;
+    line-height: 32px;
+  }
+  .reviews {
+    margin-top: 200px;
+  }
+  .reviews h2 {
+    left: 75px;
+    top: -50px;
+  }
+  .reviews .arrow_icon svg {
+    height: 80px;
+    top: 25px;
+    right: 125px;
+  }
+  .reviews .grid {
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 175px;
+    column-gap: 150px;
+  }
+  .excerpt {
+    margin-top: 100px;
+  }
+  .excerpt h2 {
+    margin-left: 75px;
+    margin-top: -50px;
+  }
+  .excerpt .text_wrapper {
+    margin: 50px 150px 50px 150px;
+  }
+  .excerpt .text_wrapper p {
+   font-size: 30px;
+   letter-spacing: 0px;
+   line-height: 1.33;
+   color: #000; 
+  }
+  .excerpt .text_wrapper button {
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 1px;
+    padding: 0 10px;
+  }
+  .gallery {
+    margin-top: 250px;
+  }
+  .gallery h2 {
+    left: 75px;
+    top: -75px;
+    max-width: 960px;
+  }
+  .gallery .arrow_icon svg {
+    height: 75px;
+    top: 37px;
+    right: 125px;
+  }
+  .gallery .grid {
+    padding-left: 125px;
+    padding-right: 125px;
+    padding-top: 75px;
+    column-gap: 75px;
+  }
+  .links {
+    margin-top: 150px;
+  }
+  .links h2 {
+    margin-left: 75px;
+  }
+  .links .list {
+    margin: 100px 150px;
+  }
+  .links .list a {
+    color: #000;
+    font-size: 45px;
+    line-height: 50px;
+  }
+  .links .list a:hover {
+    color: #00000080;
+  }
+  .links .list svg {
+    height: 45px;
+    padding-top: 5px;
+  }
+}
+/* BREAKPOINTS */
+@media screen and (max-width: 1279px) {
+  .hero {
+    margin: 75px 75px 100px 75px;
+  }
+  .hero h1 {
+    font-size: 20vh;
+    line-height: 1;
+    letter-spacing: 1.5vh;
+    margin-bottom: 0;
+  }
+  .cover_wrapper {
+    height: 80vh;
+  }
+  .intro {
+    margin: 300px 150px 100px 250px;
+  }
+  .intro p {
+    font-size: 40px;
+    line-height: 1.25;
+    letter-spacing: 5px;
+    margin-top: 35px;
+  }
+  .intro_block p {
+    margin-bottom: 40px;
+  }
+  .intro_block:nth-child(1) .intro_image_wrapper {
+    right: -150px;
+    bottom: 25px;
+  }
+  .intro_block:nth-child(1) .intro_image_wrapper_single {
+    left: -250px;
+    bottom: -500px;
+  }
+  .intro_block:nth-child(2) .intro_image_wrapper {
+    left: -250px;
+    bottom: -600px;
+  }
+  .intro_image_wrapper {
+    max-width: 450px;
+  }
+  .intro_image_wrapper_single {
+    max-width: 570px;
+  }
+  .meta {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0px;
+    margin: 350px 100px 100px 100px;
+    row-gap: 50px;
+  }
+  .meta .date, .meta .publishers {
+    width: 400px;
+  }
+  .meta .accolades {
+    width: 500px;
+    margin-left: 350px;
+  }
+  .visit {
+    margin: 125px 75px 100px 75px;
+  }
+  .visit a {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0px;
+    padding: 25px 75px;
+  }
+  .buy {
+    margin: 200px 125px 0px 125px;
+    min-height: 150px;
+    padding: 100px 37px 100px 37px;
+  } 
+  .buy h2 {
+    position: absolute;
+    left: -100px;
+    top: -150px;
+  }
+  .buy .grid {
+    padding-right: 37px;
+  }
+  .buy h3 {
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+  }
+  .buy .grid > div {
+    padding-left: 15px;
+  }
+  .buy .grid a {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .reviews {
+    margin-top: 200px;
+  }
+  .reviews h2 {
+    left: 75px;
+    top: -50px;
+  }
+  .reviews .arrow_icon svg {
+    height: 70px;
+    top: 25px;
+    right: 125px;
+  }
+  .reviews .grid {
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 175px;
+    column-gap: 75px;
+  }
+  .excerpt {
+    margin-top: 100px;
+  }
+  .excerpt h2 {
+    margin-left: 75px;
+    margin-top: -50px;
+  }
+  .excerpt .text_wrapper {
+    margin: 50px 100px 50px 150px;
+  }
+  .excerpt .text_wrapper p {
+   font-size: 24px;
+   letter-spacing: 0px;
+   line-height: 1.33;
+   color: #000; 
+  }
+  .excerpt .text_wrapper button {
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 1px;
+    padding: 0 10px;
+  }
+  .gallery {
+    margin-top: 250px;
+  }
+  .gallery h2 {
+    left: 75px;
+    top: -75px;
+    max-width: 720px;
+  }
+  .gallery .arrow_icon svg {
+    height: 60px;
+    top: 45px;
+    right: 100px;
+  }
+  .gallery .grid {
+    padding-left: 125px;
+    padding-right: 125px;
+    padding-top: 75px;
+    column-gap: 75px;
+  }
+  .links {
+    margin-top: 150px;
+  }
+  .links h2 {
+    margin-left: 75px;
+  }
+  .links .list {
+    margin: 50px 150px;
+  }
+  .links .list a {
+    font-size: 24px;
+    line-height: 1.5;
+    letter-spacing: 0px;
+  }
+  .links .list svg {
+    height: 25px;
+    width: 50px;
+    padding-top: 4px;
+  }
 }

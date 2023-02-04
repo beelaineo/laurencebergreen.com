@@ -91,6 +91,9 @@
     column-gap: 2rem;
     margin-left: 75px;
   }
+  .books_grid .books > div {
+    margin-left: 0px;
+  }
   .books_grid .background {
     height: 300px;
   }
@@ -115,6 +118,9 @@
   .books_grid .books {
     column-gap: 8px;
     margin-left: 0px;
+  }
+  .books_grid .books > div {
+    margin-left: 50px;
   }
 }
 
@@ -142,6 +148,9 @@
   }
   .books_grid .background .shelf:first-child {
     bottom: 80px;
+  }
+  .books_grid .books > div {
+    margin-left: 25px;
   }
 }
 

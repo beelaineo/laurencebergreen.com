@@ -131,7 +131,7 @@
 @media screen and (max-width: 1919px) {
   .item {
     margin-bottom: 40px;
-    margin-left: 0px;
+    margin-left: 75px;
   }
   .item:first-of-type {
     margin-left: 50px;
@@ -282,7 +282,8 @@
     margin-right: 37px;
   } 
   .info {
-    width: 180px;
+    border-top: 1px solid #fff;
+    width: 160px;
     height: 60px;
     padding: 18px;
   }
