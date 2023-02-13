@@ -203,8 +203,13 @@
   .copyright {
     order: -1;
     width: 100%;
+    max-width: 200px;
+    margin-right: 50%;
   }
-  .nav, .credit {
+  .credit {
+    flex: 50%;
+  }
+  .nav {
     flex: 50%;
   }
   .credit {

@@ -70,9 +70,10 @@
   border-top: 2px solid #fff;
   width: 310px;
   height: 60px;
-  align-self: center;
+  height: 200px;
+  align-self: end;
   padding: 2rem;
-  transform: translate(0, 50%);
+  margin-bottom: 150px;
 }
 
 .info h3 {
@@ -90,6 +91,10 @@
 .listing .info a:hover {
   background-color: #00000080;
   color: #fff;
+}
+
+.item:hover .info {
+  border-color: #000;
 }
 
 .item:hover .info h3 {
@@ -154,8 +159,9 @@
   }
   .info {
     width: 250px;
-    height: 50px;
+    height: 150px;
     padding: 30px;
+    margin-bottom: 100px;
   }
   .info h3 {
     letter-spacing: 0px;
@@ -203,7 +209,8 @@
   }
   .info {
     width: 200px;
-    height: 50px;
+    height: 150px;
+    margin-bottom: 100px;
   }
   .item:hover .info h3 {
     transform: translateX(-8px);
@@ -249,8 +256,9 @@
   }
   .info {
     width: 150px;
-    height: 60px;
+    height: 80px;
     padding: 18px;
+    margin-bottom: 60px;
   }
   .info h3 {
     letter-spacing: 0px;
@@ -284,8 +292,9 @@
   .info {
     border-top: 1px solid #fff;
     width: 160px;
-    height: 60px;
+    height: 80px;
     padding: 18px;
+    margin-bottom: 60px;
   }
   .listing .info {
     align-self: flex-start;

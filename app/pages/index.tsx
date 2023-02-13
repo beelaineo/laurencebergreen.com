@@ -72,17 +72,17 @@ export default function Homepage({ homepage }: Props) {
   const recentRef = useRef(null)
   const booksRef = useRef(null)
 
-  useEffect(() => {
-    const recentObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        booksRef.current.scrollLeft = booksRef.current.scrollWidth
-      }
-    }, {threshold: 1})
-    recentObserver.observe(recentRef.current)
-    return () => {
-      recentObserver.disconnect()
-    }
-  }, [])
+  // useEffect(() => {
+  //   const recentObserver = new IntersectionObserver((entries) => {
+  //     if (entries[0].isIntersecting) {
+  //       booksRef.current.scrollLeft = booksRef.current.scrollWidth
+  //     }
+  //   }, {threshold: 1})
+  //   recentObserver.observe(recentRef.current)
+  //   return () => {
+  //     recentObserver.disconnect()
+  //   }
+  // }, [])
 
   const heroVariants = {
     hidden: { opacity: 0, y: -16 },
@@ -124,7 +124,7 @@ export default function Homepage({ homepage }: Props) {
             style={{ objectFit: 'cover' }}
           />
         )}
-          <Parallax speed={-20}>
+          <Parallax speed={-10}>
             <motion.div animate={loading ? "hidden" : "show"} variants={heroVariants} className={styles.hero_text}>
               <h1>
                 {heroTextRows.map ((line: string, index: number) => (

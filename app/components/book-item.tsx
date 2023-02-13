@@ -25,7 +25,7 @@ const BookItem = ({ book, view }: BookItemProps) => {
         return title.replace("Search of", "Search\nof")
         break;
       case 'Over the Edge of the World':
-        return title.replace("Over the Edge of the World", "Over the\nEdge of the\nWorld")
+        return title.replace("Over the Edge of the World", "Over the Edge\nof the World")
         break;
       case 'Voyage to Mars':
         return title.replace("Voyage to Mars", "Voyage\nto Mars")
@@ -76,7 +76,7 @@ const BookItem = ({ book, view }: BookItemProps) => {
           <Image src="/book_shadow.png" alt="Book Cover Shadow" fill />
         </div>
       </div>
-      <Parallax speed={-5} className={styles.info}>
+      <div className={styles.info}>
         <h3>{formatTitle(title)}</h3>
         {view === 'books' && (
           <div className={styles.options}>
@@ -84,7 +84,7 @@ const BookItem = ({ book, view }: BookItemProps) => {
             {buy_link && <a href={buy_link} target="_blank" rel="noreferrer">Buy the Book</a>}
           </div>
         )}
-      </Parallax>
+      </div>
     </div>
   )
 }
