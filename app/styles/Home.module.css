@@ -109,6 +109,8 @@
 .recent .books {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  padding-left: 125px;
+  padding-right: 125px;
 }
 
 .recent .background {
@@ -180,13 +182,17 @@
   z-index: 2;
 }
 
-.news .arrow_icon svg {
+.news .arrow_icon {
   display: block;
   position: absolute;
-  height: 100px;
   top: 200px;
-  right: 100px;
+  right: 125px;
   z-index: 4;
+}
+
+.news .arrow_icon svg {
+  display: block;
+  height: 100px;
 }
 
 .news .wrapper {
@@ -230,6 +236,8 @@
   }
   .recent .books {
     padding-top: 200px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
   .recent .background {
     height: 300px;
@@ -264,6 +272,9 @@
     top: 150px;
     max-width: 800px;
   }
+  .news .arrow_icon {
+    top: 162px;
+  }
   .news .arrow_icon svg {
     height: 60px;
     top: 245px;
@@ -288,6 +299,10 @@
   .recent h2 {
     top: 75px;
   }
+  .recent .books {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
   .events {
     padding-top: 250px;
   }
@@ -311,6 +326,9 @@
     top: 125px;
     max-width: 800px;
   }
+  .news .arrow_icon {
+    top: 135px;
+  }
   .news .arrow_icon svg {
     top: 220px;
     right: 60px;
@@ -320,6 +338,9 @@
 @media screen and (max-width: 1023px) {
   .hero {
     padding: 0px 50px;
+  }
+  .hero h1 {
+    margin-top: 25px;
   }
   .hero_image {
     padding: 142px 150px 0 150px;
@@ -340,6 +361,8 @@
   }
   .recent .books {
     padding-top: 100px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
   .recent .background {
     height: 160px;
@@ -374,6 +397,9 @@
     top: 100px;
     left: 50px;
   }
+  .news .arrow_icon {
+    top: 115px;
+  }
   .news .arrow_icon svg {
     height: 36px;
     top: 157px;
@@ -389,6 +415,9 @@
   .hero {
     padding: 0px 37px;
   }
+  .hero h1 {
+    margin: 0px;
+  }
   .hero_image {
     padding: 150px 75px 0 75px;
   }
@@ -401,6 +430,10 @@
   }
   .recent h2 {
     left: 37px;
+  }
+  .recent .books {
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .events {
     padding-top: 200px;
@@ -429,10 +462,15 @@
     top: 108px;
     left: 37px;
   }
+  .news .arrow_icon {
+    top: 115px;
+    right: 75px;
+  }
   .news .arrow_icon svg {
     height: 22px;
-    top: 240px;
-    right: 37px;
+  }
+  .news .arrow_icon svg path {
+    stroke-width: 1px;
   }
   .news .wrapper {
     column-gap: 32px;

@@ -35,8 +35,8 @@
 }
 .nav a {
   font-size: 75px;
-  letter-spacing: 7.5px;
   line-height: 100px;
+  letter-spacing: 7.5px;
   font-family: var(--font-serif);
   text-transform: uppercase;
   text-align: left;
@@ -78,9 +78,9 @@
     height: calc(100vh - 50px);
   }
   .nav a {
-    font-size: 75px;
-    letter-spacing: 7.5px;
-    line-height: 100px;
+    font-size: 55px;
+    letter-spacing: 5.5px;
+    line-height: 75px;
   }
   .books a {
     font-size: 30px;
@@ -99,9 +99,9 @@
     padding-right: 15px;
   }
   .nav a {
-    font-size: 55px;
-    letter-spacing: 5px;
-    line-height: 70px;
+    font-size: 40px;
+    letter-spacing: 4px;
+    line-height: 50px;
   }
   .books a {
     font-size: 24px;
@@ -121,9 +121,9 @@
     padding-right: 20px;
   }
   .nav a {
-    font-size: 40px;
-    letter-spacing: 2.5px;
-    line-height: 55px;
+    font-size: 34px;
+    letter-spacing: 3.5px;
+    line-height: 45px;
   }
   .books a {
     font-size: 18px;
@@ -150,6 +150,11 @@
     width: 100%;
     display: flex;
     padding-bottom: 37px;
+  }
+  .nav a {
+    font-size: 22px;
+    letter-spacing: 2.5px;
+    line-height: 30px;
   }
   .books {
     display: flex;

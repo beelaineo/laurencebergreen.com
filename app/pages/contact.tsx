@@ -40,7 +40,7 @@ export default function Contact ({ contact }: ContactPageProps) {
       `}</style>
       {title && (
         <section className={styles.heading}>
-          <Parallax speed={-20} style={{zIndex: 2}}>
+          <Parallax speed={-10} style={{zIndex: 2}}>
           <h1>{title}</h1>
           </Parallax>
         </section>

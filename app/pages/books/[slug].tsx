@@ -100,7 +100,7 @@ export default function Book ({ book }: BookPageProps) {
       `}</style>
       {cover && title && (
         <section className={styles.hero}>
-          <Parallax speed={-20} style={{zIndex: 2}}>
+          <Parallax speed={-10} style={{zIndex: 2}}>
           <h1>{title}</h1>
           </Parallax>
           <div className={styles.cover_wrapper}>

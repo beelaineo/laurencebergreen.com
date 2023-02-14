@@ -173,9 +173,9 @@ export default function Homepage({ homepage }: Props) {
         </section>
         <section className={styles.news}>
           <Parallax speed={-10} className={styles.h2_wrapper}>News</Parallax>
-          <div className={styles.arrow_icon}>
+          <Parallax speed={-10} className={styles.arrow_icon}>
             <Arrow />
-          </div>
+          </Parallax>
           <div className={styles.wrapper}>
             {homepage.news.map((post: SanityKeyed<Post>, i: number) => (
               <NewsItem key={i} post={post} />

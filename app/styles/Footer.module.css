@@ -204,7 +204,7 @@
     order: -1;
     width: 100%;
     max-width: 200px;
-    margin-right: 50%;
+    margin-right: 10%;
   }
   .credit {
     flex: 50%;

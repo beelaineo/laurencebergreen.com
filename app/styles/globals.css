@@ -211,5 +211,14 @@ img {
     top: 25px;
     right: 25px;
   }
+  .menu-toggle:before, .menu-toggle:after {
+    height: 1px;
+  }
+  .menu-toggle:before {
+    transform: translateY(-8px);
+  }
 
+  .menu-toggle:after {
+    transform: translateY(8px);
+  }
 }

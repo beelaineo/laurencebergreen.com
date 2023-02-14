@@ -168,4 +168,7 @@
     width: 55px;
     height: 24px;
   }
+  .share_btn svg path, .share_btn svg rect  {
+    stroke-width: 1px;
+  }
 }
