@@ -843,6 +843,23 @@
     padding-top: 50px;
     column-gap: 37px;
   }
+  .links {
+    margin-top: 100px;
+  }
+  .links h2 {
+    margin-left: 75px;
+  }
+  .links .list {
+    margin: 50px 75px;
+  }
+  .links .list a {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .links .list svg {
+    height: 22px;
+    width: 40px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -979,5 +996,25 @@
     padding-right: 37px;
     padding-top: 37px;
     column-gap: 25px;
+  }
+  .links {
+    margin-top: 100px;
+  }
+  .links h2 {
+    margin-left: 37px;
+  }
+  .links .list {
+    margin: 50px 37px;
+  }
+  .links .list a {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .links .list svg {
+    height: 16px;
+    width: 25px;
+  }
+  .links .list svg path, .links .list svg rect {
+    stroke-width: 1px;
   }
 }
