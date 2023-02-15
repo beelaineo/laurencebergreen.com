@@ -21,3 +21,94 @@
 .review_item .link {
   margin-top: 25px;
 }
+
+/* BREAKPOINTS */
+@media screen and (max-width: 1919px) {
+  .review_item {
+    min-width: 480px;
+  }
+  .review_item h3 {
+    font-size: 45px;
+    line-height: 50px;
+    letter-spacing: 4.5px;
+    margin: 25px 0px;
+  }
+  .review_item blockquote {
+    font-size: 30px;
+    line-height: 35px;
+  }
+  .review_item .link {
+    margin-top: 25px;
+  }
+  .review_item .link svg {
+    width: 75px;
+    height: 37px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .review_item h3 {
+    font-size: 35px;
+    line-height: 40px;
+    letter-spacing: 3.5px;
+  }
+  .review_item blockquote {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .review_item .link {
+    margin-top: 15px;
+  }
+  .review_item .link svg {
+    width: 75px;
+    height: 37px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .review_item {
+    min-width: 285px;
+  }
+  .review_item h3 {
+    font-size: 28px;
+    line-height: 30px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+  }
+  .review_item blockquote {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .review_item .link {
+    margin-top: 15px;
+  }
+  .review_item .link svg {
+    width: 55px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .review_item {
+    min-width: 250px;
+  }
+  .review_item h3 {
+    font-size: 24px;
+    line-height: 27px;
+    letter-spacing: 2.5px;
+    margin-top: 15px;
+  }
+  .review_item .link {
+    margin-top: 15px;
+  }
+  .review_item .link svg {
+    width: 55px;
+    height: 24px;
+  }
+  .review_item .link svg path, .review_item .link svg rect {
+    stroke-width: 1px;
+  }
+  .review_item {
+    border-width: 1px;
+  }
+}
