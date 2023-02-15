@@ -223,7 +223,7 @@
   display: block;
   position: absolute;
   height: 100px;
-  top: 25px;
+  top: -78px;
   right: 100px;
   z-index: 4;
 }
@@ -452,7 +452,7 @@
   }
   .reviews .arrow_icon svg {
     height: 80px;
-    top: 25px;
+    top: -37px;
     right: 125px;
   }
   .reviews .grid {
@@ -623,7 +623,7 @@
   }
   .reviews .arrow_icon svg {
     height: 70px;
-    top: 25px;
+    top: -45px;
     right: 125px;
   }
   .reviews .grid {
@@ -751,6 +751,58 @@
     margin-left: 50vw;
     align-self: end;
   }
+  .visit {
+    margin: 100px 75px 75px 75px;
+  }
+  .visit a {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    padding: 22px 50px;
+  }
+  .buy {
+    margin: 150px 100px 0px 100px;
+    padding: 75px 20px 75px 20px;
+  } 
+  .buy h2 {
+    left: -45px;
+    top: -150px;
+  }
+  .buy .grid {
+    padding-right: 10px;
+  }
+  .buy h3 {
+    font-size: 34px;
+    letter-spacing: 3px;
+    line-height: 36px;
+    margin-bottom: 15px;
+  }
+  .buy .grid > div {
+    padding-left: 10px;
+  }
+  .buy .grid a {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 18px;
+  }
+  .reviews {
+    margin-top: 150px;
+  }
+  .reviews h2 {
+    left: 75px;
+    top: 0px;
+  }
+  .reviews .arrow_icon svg {
+    height: 36px;
+    top: 14px;
+    right: 75px;
+  }
+  .reviews .grid {
+    padding-left: 125px;
+    padding-right: 100px;
+    padding-top: 150px;
+    column-gap: 50px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -800,5 +852,60 @@
     width: 100%;
     margin-left: 0px;
     max-width: unset;
+  }
+  .visit {
+    margin: 50px 37px 50px 37px;
+  }
+  .visit a {
+    padding: 22px 37px;
+  }
+  .buy {
+    margin: 150px 37px 0px 37px;
+    padding: 50px 37px 50px 0px;
+  } 
+  .buy h2 {
+    left: 0px;
+    top: -125px;
+  }
+  .buy .grid {
+    padding-right: 10px;
+    flex-direction: column;
+    row-gap: 25px;
+  }
+  .buy h3 {
+    font-size: 22px;
+    letter-spacing: 2.5px;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+  .buy .grid > div {
+    padding-left: 25px;
+    border-left: none;
+  }
+  .buy .grid a {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 18px;
+  }
+  .reviews {
+    margin-top: 100px;
+  }
+  .reviews h2 {
+    left: 37px;
+    top: 0px;
+  }
+  .reviews .arrow_icon svg {
+    height: 22px;
+    top: 4px;
+    right: 37px;
+  }
+  .reviews .arrow_icon svg path {
+    stroke-width: 1px;
+  }
+  .reviews .grid {
+    padding-left: 37px;
+    padding-right: 75px;
+    padding-top: 100px;
+    column-gap: 37px;
   }
 }
