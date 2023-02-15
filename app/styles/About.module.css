@@ -5,31 +5,63 @@
   z-index: 2;
 }
 
-.portrait_wrapper {
+.portrait {
   position: absolute;
   left: 300px;
   top: 300px;
+  z-index: 1;
+}
+
+.portrait .wrapper {
   width: 750px;
   height: 750px;
-  z-index: 0;
-}
-
-.portrait {
-  background-color: var(--background-color);
-}
-
-.portrait img {
-  mix-blend-mode: multiply;
-}
-
-.portait_wrapper:hover {
+  position: relative;
   z-index: 1;
+}
+
+.bg_layer {
+  background-color: var(--background-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.image {
+  mix-blend-mode: multiply;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  transition: all 500ms ease-out;
+}
+
+.image_overlay {
+  opacity: 0;
+  transition: all 500ms ease-out;
+}
+
+.portait:hover {
+  z-index: 3;
+}
+
+.wrapper .image, .wrapper div {
+  transition: all 500ms ease-out;
+}
+
+.portrait:hover .image, .portrait:hover .wrapper div, .portrait:hover .image_overlay {
+}
+
+.portait:hover .image_overlay {
+  opacity: 1;
 }
 
 .text {
-  margin: 500px 100px 100px 600px;
-  z-index: 1;
+  margin: 610px 100px 100px 600px;
+  z-index: 2;
   pointer-events: none;
+  position: relative;
+  max-width: 1100px;
 }
 
 .intro_text {
@@ -104,8 +136,16 @@
   .heading h1 {
     margin-left: 75px;
   }
+  .portrait {
+    left: 150px;
+    top: 250px;
+  }
+  .portrait .wrapper {
+    width: 400px;
+    height: 400px;
+  }
   .text {
-    margin: 300px 75px 75px 400px;
+    margin: 350px 75px 75px 400px;
   }
   .intro_text {
     font-size: 60px;
@@ -147,8 +187,16 @@
   .heading h1 {
     margin-left: 75px;
   }
+  .portrait {
+    left: 120px;
+    top: 220px;
+  }
+  .portrait .wrapper {
+    width: 350px;
+    height: 350px;
+  }
   .text {
-    margin: 250px 75px 50px 300px;
+    margin: 350px 75px 50px 300px;
   }
   .intro_text {
     font-size: 35px;
@@ -191,8 +239,16 @@
   .heading h1 {
     margin-left: 50px;
   }
+  .portrait {
+    left: 50px;
+    top: 175px;
+  }
+  .portrait .wrapper {
+    width: 300px;
+    height: 300px;
+  }
   .text {
-    margin: 200px 50px 50px 200px;
+    margin: 300px 50px 50px 200px;
   }
   .intro_text {
     font-size: 28px;
@@ -237,17 +293,18 @@
   .heading h1 {
     margin-left: 37px;
   }
-  .portrait_wrapper {
-    position: static;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+  .portrait {
+    left: 37px;
+    top: 125px;
+    position: relative;
+    width: calc(100vw - 74px);
+    height: calc(100vw - 74px);
   }
-  .portrait_wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: static;
+  .portrait .wrapper {
+   max-width: 100%;
+   max-height: 100%;
+   width: 100%;
+   height: 100%;
   }
   .text {
     margin: 150px 37px 37px 37px;

@@ -63,16 +63,25 @@ export default function About ({ about }: AboutPageProps) {
           </Parallax>
         </section>
       )}
-      <div className={styles.portrait_wrapper}>
-        <div className={styles.portrait}>
-        <Img
-          src={coverImage.src}
-          loader={coverImage.loader}
-          alt="Portrait of Laurence Bergreen"
-          fill
-          style={{ objectFit: 'contain' }}
-          className={styles.cover_image}
-        />
+      <div className={styles.portrait}>
+        <div className={styles.wrapper}>
+          <Img
+            src={coverImage.src}
+            loader={coverImage.loader}
+            alt="Portrait of Laurence Bergreen"
+            fill
+            style={{ objectFit: 'contain' }}
+            className={styles.image}
+          />
+          <div className={styles.bg_layer} />
+          <Img
+            src={coverImage.src}
+            loader={coverImage.loader}
+            alt="Portrait of Laurence Bergreen"
+            fill
+            style={{ objectFit: 'contain' }}
+            className={styles.image_overlay}
+          />
         </div>
       </div>
       {intro && body && (
