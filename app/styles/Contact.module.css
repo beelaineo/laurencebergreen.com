@@ -5,7 +5,7 @@
 }
 
 .sections {
-  padding-top: 400px;
+  padding-top: 200px;
   position: relative;
   width: 100%;
 }
@@ -31,22 +31,56 @@
   .heading h1 {
     margin-left: 75px;
   }
+  .sections {
+    padding-top: 200px;
+  }
+  .sections .wrapper {
+    margin: 0 150px;
+    padding: 150px 75px 75px 75px;
+  }   
 }
 
 @media screen and (max-width: 1279px) {
   .heading h1 {
     margin-left: 75px;
   }
+  .sections {
+    padding-top: 200px;
+  }
+  .sections .wrapper {
+    margin: 0 125px;
+    padding: 130px 60px 60px 60px;
+    row-gap: 25px;
+  }   
 }
 
 @media screen and (max-width: 1023px) {
   .heading h1 {
     margin-left: 50px;
   }
+  .sections {
+    padding-top: 150px;
+  }
+  .sections .wrapper {
+    margin: 0 80px;
+    min-height: 240px;
+    padding: 80px 40px 40px 36px;
+    row-gap: 25px;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .heading h1 {
     margin-left: 37px;
+  }
+  .sections {
+    padding-top: 100px;
+  }
+  .sections .wrapper {
+    margin: 0 40px 0 37px;
+    min-height: 180px;
+    padding: 37px 0px 0px 0px;
+    row-gap: 10px;
+    background-color: transparent;
   }
 }
