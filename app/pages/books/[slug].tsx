@@ -166,19 +166,19 @@ export default function Book ({ book }: BookPageProps) {
         {date && (
           <div className={styles.date}>
             <h4>Publish Date</h4>
-            {formattedDate}
+            <span className="h4">{formattedDate}</span>
           </div>
         )}
         {publishers?.length > 0 && (
           <div className={styles.publishers}>
             <h4>Publishers</h4>
-            {publishers.map(publisher => (publisher.title)).join('\n')}
+            <span className="h4">{publishers.map(publisher => (publisher.title)).join('\n')}</span>
           </div>
         )}
         {accolades?.length > 0 && (
           <div className={styles.accolades}>
             <h4>Accolades</h4>
-            {accolades.map(a => (a.title)).join('\n')}
+            <span className="h4">{accolades.map(a => (a.title)).join('\n')}</span>
           </div>
         )}
       </section>

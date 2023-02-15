@@ -122,7 +122,7 @@
   font-family: var(--font-sans);
   color: #00000080;
   font-size: 40px;
-  line-height: 50px;
+  line-height: 1.2;
   white-space: pre-wrap;
   margin: 400px 150px 100px 150px;
   display: flex;
@@ -371,6 +371,7 @@
     font-size: 55px;
     letter-spacing: 5.5px;
     margin-top: 35px;
+    line-height: 1.2;
   }
   .intro_block p {
     margin-bottom: 50px;
@@ -395,7 +396,7 @@
   }
   .meta {
     font-size: 30px;
-    line-height: 35px;
+    line-height: 1.2;
     margin: 350px 100px 100px 100px;
     row-gap: 50px;
   }
@@ -539,7 +540,6 @@
   .intro p {
     font-size: 40px;
     letter-spacing: 4px;
-    line-height: 80px;
     margin-top: 35px;
   }
   .intro_block p {
@@ -565,7 +565,6 @@
   }
   .meta {
     font-size: 24px;
-    line-height: 30px;
     letter-spacing: 0px;
     margin: 350px 100px 100px 100px;
     row-gap: 50px;
@@ -696,7 +695,6 @@
   .intro p {
     font-size: 34px;
     letter-spacing: 3.5px;
-    line-height:60px;
     margin-top: 35px;
   }
 }

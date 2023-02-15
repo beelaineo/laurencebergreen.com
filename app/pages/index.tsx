@@ -33,6 +33,7 @@ interface EventType {
 
 export default function Homepage({ homepage }: Props) {
   const [loading, setLoading] = React.useState(true)
+  const [showHeading, setShowHeading] = React.useState(false)
   const [showImage, setShowImage] = React.useState(false)
   const [showSticker, setShowSticker] = React.useState(false)
   const { width, height } = useWindowDimensions()
@@ -48,13 +49,15 @@ export default function Homepage({ homepage }: Props) {
   const radius = width < 1024 ? 58 : width < 1920 ? 100 : 220
 
   useEffect(() => {
-    const loadingTimer = setTimeout(() => {setLoading(false), 1000})
-    const imageTimer = setTimeout(() => {setShowImage(true), 2000})
+    const loadingTimer = setTimeout(() => {setLoading(false), 500})
+    const headingTimer = setTimeout(() => {setShowHeading(true), 3000})
+    const imageTimer = setTimeout(() => {setShowImage(true), 1000})
     const stickerTimer = setTimeout(() => {setShowSticker(true), 5000})
     return () => {
       clearTimeout(loadingTimer)
       clearTimeout(imageTimer)
       clearTimeout(stickerTimer)
+      clearTimeout(headingTimer)
     }
   }, [])
 
@@ -96,10 +99,13 @@ export default function Homepage({ homepage }: Props) {
     },
   }
   const headingVariant = {
-    hidden: { opacity: 0, y: 0 },
+    hidden: { opacity: 0, y: 50 },
     show: {
       opacity: 1,
-      y: -16, 
+      y: 0, 
+      transition: {
+        duration: 0.5,
+      }
     },
   }
 
@@ -113,7 +119,7 @@ export default function Homepage({ homepage }: Props) {
       </Head>
       <main className={styles.main}>
         <section className={styles.hero}>
-        {showImage == true && (
+        {loading == false && showImage == true && (
           <Img
             src={heroImg.src}
             loader={heroImg.loader}
@@ -125,7 +131,7 @@ export default function Homepage({ homepage }: Props) {
           />
         )}
           <Parallax speed={-10}>
-            <motion.div animate={loading ? "hidden" : "show"} variants={heroVariants} className={styles.hero_text}>
+            <motion.div animate={!loading && showHeading ? "show" : "hidden"} variants={heroVariants} className={styles.hero_text}>
               <h1>
                 {heroTextRows.map ((line: string, index: number) => (
                   <motion.p variants={headingVariant} key={index}>{line}</motion.p>
@@ -133,7 +139,7 @@ export default function Homepage({ homepage }: Props) {
               </h1>
             </motion.div>
           </Parallax>
-          {showSticker == true && (
+          {!loading && showSticker == true && (
           <h3 className={styles.sticker}>
             {stickerChars.map((char: string, i: number) => (
               <span

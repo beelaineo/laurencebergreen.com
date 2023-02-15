@@ -22,11 +22,11 @@
 .hero_text h1 {
   text-transform: uppercase;
   font-family: var(--font-serif);
-  transition: opacity 250ms ease-out;
 }
 
 .hero_text p {
-  transition: opacity 250ms ease-out;
+  transition: opacity 500ms ease-in;
+  opacity: 0;
 }
 
 .hero_image {
