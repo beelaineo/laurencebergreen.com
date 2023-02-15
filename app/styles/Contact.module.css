@@ -26,3 +26,27 @@
   top: 200px;
   max-width: 800px;
 }
+
+@media screen and (max-width: 1919px) {
+  .heading h1 {
+    margin-left: 75px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .heading h1 {
+    margin-left: 75px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .heading h1 {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .heading h1 {
+    margin-left: 37px;
+  }
+}

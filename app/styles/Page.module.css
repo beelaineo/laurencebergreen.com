@@ -30,3 +30,65 @@
 .body p:last-of-type {
   margin-bottom: 0px;
 }
+
+@media screen and (max-width: 1919px) {
+  .heading h1 {
+    margin-left: 75px;
+  }
+  .body h2 {
+    font-size: 60px;
+    line-height: 70px;
+    letter-spacing: 6px;
+  }
+  .body {
+    font-size: 45px;
+    line-height: 50px;
+    margin: 200px 75px 100px 400px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .heading h1 {
+    margin-left: 75px;
+  }
+  .body h2 {
+    font-size: 35px;
+    line-height: 40px;
+    letter-spacing: 4px;
+  }
+  .body {
+    font-size: 24px;
+    line-height: 30px;
+    margin: 150px 75px 75px 300px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .heading h1 {
+    margin-left: 50px;
+  }
+  .body h2 {
+    font-size: 28px;
+    line-height: 30px;
+    letter-spacing: 3px;
+  }
+  .body {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 150px 50px 100px 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .heading h1 {
+    margin-left: 37px;
+  }
+  .body h2 {
+    font-size: 24px;
+    line-height: 27px;
+    margin-bottom: 20px;
+  }
+  .body {
+    margin: 150px 37px 0px 37px;
+  }
+}

@@ -1,9 +1,17 @@
+.heading h1 {
+  margin-left: 100px;
+  margin-top: 0px;
+  pointer-events: none;
+  z-index: 2;
+}
+
 .portrait_wrapper {
   position: absolute;
   left: 300px;
   top: 300px;
   width: 750px;
   height: 750px;
+  z-index: 0;
 }
 
 .portrait {
@@ -16,12 +24,6 @@
 
 .portait_wrapper:hover {
   z-index: 1;
-}
-
-.heading h1 {
-  margin-left: 100px;
-  margin-top: 0px;
-  pointer-events: none;
 }
 
 .text {
@@ -96,4 +98,185 @@
 
 .bio a:hover {
   background-color: rgba(0, 0, 0, 0.33);
+}
+
+@media screen and (max-width: 1919px) {
+  .heading h1 {
+    margin-left: 75px;
+  }
+  .text {
+    margin: 300px 75px 75px 400px;
+  }
+  .intro_text {
+    font-size: 60px;
+    line-height: 70px;
+    letter-spacing: 6px;
+    margin-right: 40px;
+  }
+  .body_text {
+    margin-top: 50px;
+  }
+  .body_text p {
+    font-size: 45px;
+    line-height: 50px;
+    margin-top: 50px;
+  }
+  .awards {
+    padding-top: 350px;
+  }
+  .awards .wrapper {
+    padding: 150px 75px 75px 75px;
+    margin: 0 150px;
+  }
+  .awards .h2_wrapper {
+    left: 75px;
+    top: 150px;
+  }
+  .bio {
+    margin: 50px 150px;
+  }
+  .bio a {
+    font-size: 45px;
+    line-height: 50px;
+    letter-spacing: 3px;
+    padding: 50px 125px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .heading h1 {
+    margin-left: 75px;
+  }
+  .text {
+    margin: 250px 75px 50px 300px;
+  }
+  .intro_text {
+    font-size: 35px;
+    line-height: 40px;
+    letter-spacing: 4px;
+    margin-right: 30px;
+  }
+  .body_text {
+    margin-top: 40px;
+  }
+  .body_text p {
+    font-size: 24px;
+    line-height: 30px;
+    margin-top: 30px;
+  }
+  .awards {
+    padding-top: 250px;
+  }
+  .awards .wrapper {
+    margin: 0 125px;
+    padding: 130px 60px 60px 60px;
+    row-gap: 25px;
+  }
+  .awards .h2_wrapper {
+    top: 100px;
+    max-width: 600px;
+  }
+  .bio {
+    margin: 50px 125px;
+  }
+  .bio a {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 2px;
+    padding: 25px 75px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .heading h1 {
+    margin-left: 50px;
+  }
+  .text {
+    margin: 200px 50px 50px 200px;
+  }
+  .intro_text {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: 3px;
+    margin-right: 30px;
+  }
+  .body_text {
+    margin-top: 30px;
+  }
+  .body_text p {
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 22px;
+  }
+  .awards {
+    padding-top: 225px;
+  }
+  .awards .wrapper {
+    margin: 0 80px;
+    min-height: 240px;
+    padding: 80px 40px 40px 36px;
+    row-gap: 25px;
+  }
+  .awards .h2_wrapper {
+    top: 80px;
+    max-width: 500px;
+    left: 50px;
+  }
+  .bio {
+    margin: 40px 80px;
+  }
+  .bio a {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    padding: 20px 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .heading h1 {
+    margin-left: 37px;
+  }
+  .portrait_wrapper {
+    position: static;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .portrait_wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: static;
+  }
+  .text {
+    margin: 150px 37px 37px 37px;
+  }
+  .intro_text {
+    font-size: 24px;
+    line-height: 27px;
+    margin-right: 30px;
+  }
+  .body_text {
+    margin-top: 30px;
+  }
+  .awards {
+    padding-top: 200px;
+    margin-top: 50px;
+  }
+  .awards .wrapper {
+    margin: 0 40px 0 37px;
+    min-height: 180px;
+    padding: 37px 0px 0px 0px;
+    row-gap: 10px;
+    background-color: transparent;
+  }
+  .awards .h2_wrapper {
+    top: 80px;
+    max-width: 270px;
+    left: 37px;
+  }
+  .bio {
+    margin: 25px 37px;
+  }
 }
