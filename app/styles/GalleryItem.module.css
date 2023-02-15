@@ -32,3 +32,25 @@
 .gallery_item:hover .image_overlay {
   opacity: 1;
 }
+
+/* BREAKPOINTS */
+@media screen and (max-width: 1919px) {
+  .wrapper {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .wrapper {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .wrapper {
+    width: 400px;
+    height: 400px;
+  }
+}

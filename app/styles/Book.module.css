@@ -493,7 +493,7 @@
   }
   .gallery .arrow_icon svg {
     height: 75px;
-    top: 37px;
+    top: -60px;
     right: 125px;
   }
   .gallery .grid {
@@ -664,7 +664,7 @@
   }
   .gallery .arrow_icon svg {
     height: 60px;
-    top: 45px;
+    top: -65px;
     right: 100px;
   }
   .gallery .grid {
@@ -803,6 +803,46 @@
     padding-top: 150px;
     column-gap: 50px;
   }
+  .excerpt {
+    margin-top: 75px;
+  }
+  .excerpt h2 {
+    margin-left: 75px;
+    margin-top: -50px;
+  }
+  .excerpt .text_wrapper {
+    margin: 50px 75px 50px 75px;
+  }
+  .excerpt .text_wrapper p {
+    font-size: 18px;
+   letter-spacing: 0px;
+   color: #000; 
+  }
+  .excerpt .text_wrapper button {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 1px;
+    padding: 0 10px;
+  }
+  .gallery {
+    margin-top: 150px;
+  }
+  .gallery h2 {
+    left: 75px;
+    top: -75px;
+    max-width: 400px;
+  }
+  .gallery .arrow_icon svg {
+    height: 36px;
+    top: -62px;
+    right: 75px;
+  }
+  .gallery .grid {
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 50px;
+    column-gap: 37px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -907,5 +947,37 @@
     padding-right: 75px;
     padding-top: 100px;
     column-gap: 37px;
+  }
+  .excerpt {
+    margin-top: 37px;
+  }
+  .excerpt h2 {
+    margin-left: 37px;
+    margin-top: -50px;
+  }
+  .excerpt .text_wrapper {
+    margin: 50px 37px 50px 37px;
+  }
+  .gallery {
+    margin-top: 125px;
+  }
+  .gallery h2 {
+    left: 37px;
+    top: -50px;
+    max-width: 400px;
+  }
+  .gallery .arrow_icon svg {
+    height: 22px;
+    top: -48px;
+    right: 37px;
+  }
+  .gallery .arrow_icon svg path {
+    stroke-width: 1px;
+  }
+  .gallery .grid {
+    padding-left: 37px;
+    padding-right: 37px;
+    padding-top: 37px;
+    column-gap: 25px;
   }
 }

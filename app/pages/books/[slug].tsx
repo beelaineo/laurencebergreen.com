@@ -251,9 +251,11 @@ export default function Book ({ book }: BookPageProps) {
           <Parallax speed={-5} style={{zIndex: 2, position: 'relative'}}>
             <h2>{gallery.title}</h2>
           </Parallax>
+          <Parallax speed={-5} style={{zIndex: 2, position: 'relative'}}>
           <div className={styles.arrow_icon}>
             <Arrow />
           </div>
+          </Parallax>
           <div className={styles.grid}>
             {gallery.images.map((image) => (
               <GalleryItem key={image._key} image={image.image} caption={image.caption} color={bookColor} />
