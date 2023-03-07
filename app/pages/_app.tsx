@@ -10,6 +10,7 @@ import { MenuProvider } from '../providers/menu-provider'
 const boogy = localFont({ src: '../fonts/Boogy_Brut_Poster_WEB-White.woff2' })
 const monument = localFont({
   src: '../fonts/ABCMonumentGroteskSemi-Mono-Light.woff2',
+  display: 'auto',
 })
 
 export default function App({ Component, pageProps}: AppProps) {
