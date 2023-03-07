@@ -49,7 +49,7 @@
   position: absolute;
   right: 50px;
   top: 450px;
-  animation: 10s ease-out 1s forwards infinite spin, 1s ease-out 3s forwards fadeIn;
+  animation: spin 10s linear infinite, 1s ease-out 3s forwards fadeIn;
   opacity: 0;
   width: 440px;
   height: 440px;
@@ -221,11 +221,11 @@
     padding: 150px 200px 0 250px;
   }
   .sticker {
-    font-size: 24px;
+    font-size: 22px;
     right: 100px;
     top: 350px;
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
   }
   .recent {
     margin-top: 400px;
@@ -346,7 +346,7 @@
     padding: 142px 150px 0 150px;
   }
   .sticker {
-    font-size: 14px;
+    font-size: 12px;
     right: 90px;
     top: 250px;
     width: 116px;

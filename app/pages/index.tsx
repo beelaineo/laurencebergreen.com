@@ -46,7 +46,7 @@ export default function Homepage({ homepage }: Props) {
   const stickerChars = homepage.sticker_text.split('')
   const arc = 360
   const degree = arc / stickerChars.length
-  const radius = width < 1024 ? 58 : width < 1920 ? 100 : 220
+  const radius = width < 1024 ? 58 : width < 1920 ? 110 : 220
 
   useEffect(() => {
     const loadingTimer = setTimeout(() => {setLoading(false), 500})
