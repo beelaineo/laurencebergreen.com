@@ -93,10 +93,6 @@
   color: #fff;
 }
 
-.item:hover .info {
-  border-color: #000;
-}
-
 .item:hover .info h3 {
   color: #fff;
   transform: translateX(-10px);
