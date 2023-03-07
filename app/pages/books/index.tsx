@@ -11,6 +11,7 @@ import { Parallax } from 'react-scroll-parallax'
 import { motion } from "framer-motion"
 import React, {useRef, useEffect, useState} from 'react'
 import { NotFound } from '../../components/not-found'
+import { useMenu } from '../../providers/menu-provider'
 
 interface BooksIndexProps {
   books?: BookType[]
@@ -18,8 +19,9 @@ interface BooksIndexProps {
 
 export default function BooksIndex({ books }: BooksIndexProps) {
   const [loading, setLoading] = useState(true)
-
+  const { resetMenuColor } = useMenu()
   useEffect(() => {
+    resetMenuColor()
     const loadingTimer = setTimeout(() => {setLoading(false), 1000})
     return () => {
       clearTimeout(loadingTimer)

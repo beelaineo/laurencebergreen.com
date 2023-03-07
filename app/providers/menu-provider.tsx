@@ -43,12 +43,15 @@ const MenuProvider = ({ children }: MenuProviderProps) => {
   const openMenu = () => {
     setMenuIsOpen(true)
   }
+  const resetMenuColor = () => {
+    setMenuColor('rgba(142,45,45,.85)')
+  }
   const updateMenuColor = (color: rgbaColor) => {
     const rgbCode = `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},.85))`
     setMenuColor(rgbCode)
   }
   return (
-    <MenuContext.Provider value={{ menuIsOpen, toggleMenu, openMenu, closeMenu, updateMenuColor, menuColor }}>
+    <MenuContext.Provider value={{ menuIsOpen, toggleMenu, openMenu, closeMenu, updateMenuColor, menuColor, resetMenuColor }}>
       {children}
     </MenuContext.Provider>
   )

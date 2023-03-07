@@ -14,6 +14,7 @@ import { Parallax } from 'react-scroll-parallax'
 import { motion } from "framer-motion"
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import React, {useRef, useEffect} from 'react'
+import { useMenu } from '../providers/menu-provider'
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T
 type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
@@ -48,7 +49,10 @@ export default function Homepage({ homepage }: Props) {
   const degree = arc / stickerChars.length
   const radius = width < 1024 ? 58 : width < 1920 ? 110 : 220
 
+  const { resetMenuColor } = useMenu()
+
   useEffect(() => {
+    resetMenuColor()
     const loadingTimer = setTimeout(() => {setLoading(false), 500})
     const headingTimer = setTimeout(() => {setShowHeading(true), 3000})
     const imageTimer = setTimeout(() => {setShowImage(true), 1000})

@@ -10,6 +10,7 @@ import LinkIcon from '../components/icon-link'
 import { Parallax } from 'react-scroll-parallax'
 import { collapseTextChangeRangesAcrossMultipleVersions, isConstructorDeclaration, visitEachChild } from 'typescript'
 import SectionItem from '../components/section-item'
+import { useMenu } from '../providers/menu-provider'
 
 interface EntryType {
   _type: "entry"
@@ -28,9 +29,14 @@ interface ContactPageProps {
 }
 
 export default function Contact ({ contact }: ContactPageProps) {
+  const { resetMenuColor } = useMenu()
   if (!contact) return <NotFound />
 
   const { title, sections } = contact
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  React.useEffect(() => {
+    resetMenuColor()
+  }, [])
 
   return (
     <>

@@ -17,15 +17,23 @@ import { linkSync } from 'fs'
 import LinkIcon from '../../components/icon-link'
 import { Parallax } from 'react-scroll-parallax'
 import { collapseTextChangeRangesAcrossMultipleVersions, isConstructorDeclaration, visitEachChild } from 'typescript'
+import { useMenu } from '../../providers/menu-provider'
 
 interface PageProps {
   page: PageType
 }
 
 export default function Page ({ page }: PageProps) {
+  const { resetMenuColor } = useMenu()
+
   if (!page) return <NotFound />
 
   const { title, slug, body } = page
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  React.useEffect(() => {
+    resetMenuColor()
+  }, [])
 
   return (
     <>

@@ -14,6 +14,7 @@ import LinkIcon from '../components/icon-link'
 import { Parallax } from 'react-scroll-parallax'
 import { collapseTextChangeRangesAcrossMultipleVersions, isConstructorDeclaration, visitEachChild } from 'typescript'
 import AwardItem from '../components/award-item'
+import { useMenu } from '../providers/menu-provider'
 
 type AwardType = {
   title?: string
@@ -41,7 +42,12 @@ interface AboutPageProps {
 }
 
 export default function About ({ about }: AboutPageProps) {
+  const { resetMenuColor } = useMenu()
   if (!about) return <NotFound />
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  React.useEffect(() => {
+    resetMenuColor()
+  }, [])
 
   const { title, image, intro, body, awards, bio } = about
   // eslint-disable-next-line react-hooks/rules-of-hooks
