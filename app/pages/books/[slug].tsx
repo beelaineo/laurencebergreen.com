@@ -17,6 +17,7 @@ import GalleryItem from '../../components/gallery-item'
 import { linkSync } from 'fs'
 import LinkIcon from '../../components/icon-link'
 import { Parallax } from 'react-scroll-parallax'
+import { useMenu } from '../../providers/menu-provider'
 import { collapseTextChangeRangesAcrossMultipleVersions, isConstructorDeclaration, visitEachChild } from 'typescript'
 
 interface BookPageProps {
@@ -25,6 +26,8 @@ interface BookPageProps {
 
 export default function Book ({ book }: BookPageProps) {
   const [showExcerpt, setShowExcerpt] = React.useState(false)
+  const { updateMenuColor } = useMenu()
+  
   if (!book) return <NotFound />
 
   const { title, slug, intro, intro_gallery, cover, color, date, visit, accolades, publishers, buy_link, sellers, reviews, excerpt, gallery, links } = book
@@ -43,6 +46,11 @@ export default function Book ({ book }: BookPageProps) {
 		sanityClient,
 		intro_gallery[1]
 	) : null
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  React.useEffect(() => {
+    updateMenuColor(color)
+  }, [color, updateMenuColor])
 
   const handleMore = () => {
     console.log('click more')

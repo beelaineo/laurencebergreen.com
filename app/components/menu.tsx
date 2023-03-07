@@ -17,7 +17,7 @@ interface NavLinkType {
 export default function Menu() {
   const [settings, setSettings] = useState(null)
   const [books, setBooks] = useState(null)
-  const { menuIsOpen, closeMenu } = useMenu()
+  const { menuIsOpen, closeMenu, menuColor } = useMenu()
   const { asPath, pathname } = useRouter()
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function Menu() {
         color: #00000080;
       }
     `}</style>
-    <div className={([styles.menu, menuIsOpen ? styles.open : '']).join(" ")}>
+    <div className={([styles.menu, menuIsOpen ? styles.open : '']).join(" ")} style={{ backgroundColor: menuColor}}>
       <div className={styles.wrapper}>
         <nav className={styles.nav}>
           {settings?.nav_links.map((item: SanityKeyed<NavLinkType>, i: number) => (
