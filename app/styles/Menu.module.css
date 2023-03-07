@@ -71,7 +71,7 @@
 /* BREAKPOINTS */
 @media screen and (max-width: 1919px) {
   .wrapper {
-    grid-template-columns: auto 2fr 2fr;
+    grid-template-columns: 2fr 2fr 2fr;
     column-gap: 50px;
     margin: 50px 75px;
     height: calc(100vh - 50px);
@@ -87,7 +87,7 @@
     letter-spacing: 0px;
   }
   .books h3 {
-    line-height: 70px;
+    line-height: 55px;
   }
 }
 @media screen and (max-width: 1279px) {
