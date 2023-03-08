@@ -72,6 +72,7 @@
 @media screen and (max-width: 767px) {
   .heading h1 {
     margin-left: 37px;
+    margin-top: -75px;
   }
   .sections {
     padding-top: 100px;

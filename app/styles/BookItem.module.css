@@ -279,6 +279,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .item {
+    justify-content: flex-start !important;
+    padding: 0 37px;
+  }
   .item:first-of-type {
     margin-left: 37px;
   }

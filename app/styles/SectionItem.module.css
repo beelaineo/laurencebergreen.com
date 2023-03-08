@@ -127,6 +127,11 @@ padding: 25px 0 50px 0;
     margin-right: 0px;
     padding-bottom: 10px;
   }
+  .item svg {
+    height: 37px;
+    width: 42px;
+    padding-top: 8px;
+  }
   .item svg path, .item svg rect {
     stroke-width: 1px;
   }

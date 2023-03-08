@@ -1,6 +1,6 @@
 .heading h1 {
   margin-left: 100px;
-  margin-top: 0px;
+  margin-top: -75px;
   pointer-events: none;
   z-index: 2;
 }

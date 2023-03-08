@@ -20,7 +20,9 @@
   margin-top: 100px;
   width: 100%;
 }
-
+.books_grid.ya_books {
+  margin-top: 200px;
+}
 .row {
   position: relative;
   padding-top: 150px;
@@ -84,6 +86,9 @@
   .books_grid {
     margin-top: 50px;
   }
+  .books_grid.ya_books {
+    margin-top: 100px;
+  }
   .row {
     padding-top: 100px;
   }
@@ -112,6 +117,9 @@
   .books_grid {
     margin-top: 50px;
   }
+  .books_grid.ya_books {
+    margin-top: 100px;
+  }
   .row {
     padding-top: 100px;
   }
@@ -133,6 +141,9 @@
   }
   .books_grid {
     margin-top: 40px;
+  }
+  .books_grid.ya_books {
+    margin-top: 80px;
   }
   .row {
     padding-top: 100px;
@@ -166,6 +177,9 @@
   }
   .books_grid {
     margin-top: 125px;
+  }
+  .books_grid.ya_books {
+    margin-top: 150px;
   }
   .row {
     padding-top: 0px;

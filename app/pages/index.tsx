@@ -163,7 +163,7 @@ export default function Homepage({ homepage }: Props) {
           <Parallax speed={-10} style={{zIndex: 2}}>
             <h2>Recent Publications</h2>
           </Parallax>
-            <div className={styles.books} ref={booksRef}>
+            <div className={styles.books} ref={booksRef} onTouchMove={(e) => e.preventDefault()}>
               {homepage.books.map((book: BookType) => (
                   <BookItem key={book._id} book={book} view="home" />
               ))}
