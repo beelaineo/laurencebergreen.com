@@ -20,7 +20,7 @@ import LinkIcon from '../../components/icon-link'
 import { Parallax } from 'react-scroll-parallax'
 import { useMenu } from '../../providers/menu-provider'
 import { collapseTextChangeRangesAcrossMultipleVersions, isConstructorDeclaration, visitEachChild } from 'typescript'
-const { useEffect, useState } = React
+const { useEffect, useState, useRef } = React
 
 interface BookPageProps {
   book: BookType
@@ -30,6 +30,7 @@ export default function Book ({ book }: BookPageProps) {
   const [showExcerpt, setShowExcerpt] = useState(false)
   const { updateMenuColor } = useMenu()
   const { asPath } = useRouter()
+  const headingRef = useRef(null)
 
   const coverImage: UseNextSanityImageProps = useNextSanityImage(
 		sanityClient,
@@ -40,6 +41,7 @@ export default function Book ({ book }: BookPageProps) {
     if (!book) return
     console.log('useEffect book color:', book.color)
     updateMenuColor(book.color)
+    headingRef.current.focus()
   }, [])
 
   useEffect(() => {
@@ -109,7 +111,7 @@ export default function Book ({ book }: BookPageProps) {
       {cover && title && (
         <section className={styles.hero}>
           <Parallax speed={-10} style={{zIndex: 2}}>
-          <h1>{title}</h1>
+          <h1 ref={headingRef}>{title}</h1>
           </Parallax>
           <div className={styles.cover_wrapper}>
             <Img
