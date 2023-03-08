@@ -513,14 +513,14 @@
   }
   .links .list a {
     color: #000;
-    font-size: 45px;
-    line-height: 50px;
+    font-size: 30px;
+    line-height: 35px;
   }
   .links .list a:hover {
     color: #00000080;
   }
   .links .list svg {
-    height: 45px;
+    height: 30px;
     padding-top: 5px;
   }
 }

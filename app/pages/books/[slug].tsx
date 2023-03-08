@@ -50,7 +50,7 @@ export default function Book ({ book }: BookPageProps) {
 
   if (!book) return <NotFound />
 
-  const { title, slug, intro, intro_gallery, cover, color, date, visit, accolades, publishers, buy_link, sellers, reviews, excerpt, gallery, links } = book
+  const { title, slug, intro, intro_gallery, cover, category, color, date, visit, accolades, publishers, buy_link, sellers, reviews, excerpt, gallery, links } = book
 
   const handleMore = () => {
     console.log('click more')
@@ -120,7 +120,11 @@ export default function Book ({ book }: BookPageProps) {
               style={{ objectFit: 'contain' }}
               className={styles.cover_image}
             />
-            <BookCoverBG color={bookColor} />
+            {category == 'ya_book' ? (
+              <div style={{backgroundColor: bookColor, position: 'absolute', zIndex: '-1', height: '100%', width: '100%'}} />
+              ) : (
+              <BookCoverBG color={bookColor} />
+            )}
             <Img
               src={coverImage.src}
               loader={coverImage.loader}
