@@ -11,7 +11,7 @@ import EventItem from '../components/event-item'
 import NewsItem from '../components/news-item'
 import Arrow from '../components/icon-arrow'
 import { Parallax } from 'react-scroll-parallax'
-import { motion } from "framer-motion"
+import { motion, useScroll, useInView, Variants } from "framer-motion"
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import React, {useRef, useEffect} from 'react'
 import { useMenu } from '../providers/menu-provider'
@@ -79,6 +79,8 @@ export default function Homepage({ homepage }: Props) {
   const recentRef = useRef(null)
   const booksRef = useRef(null)
 
+  const recentIsInView = useInView(recentRef)
+
   // useEffect(() => {
   //   const recentObserver = new IntersectionObserver((entries) => {
   //     if (entries[0].isIntersecting) {
@@ -111,6 +113,17 @@ export default function Homepage({ homepage }: Props) {
         duration: 0.5,
       }
     },
+  }
+
+  const recentVariant = { hidden: { opacity: 0, y: 20 } }
+
+  const recentVariants: Variants = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { staggerChildren: 0.3, type: "spring", stiffness: 300, damping: 24 }
+    },
+    hidden: { opacity: 0, y: 20, transition: { duration: 0.2 } }
   }
 
   return (
@@ -165,11 +178,13 @@ export default function Homepage({ homepage }: Props) {
           <Parallax speed={-10} style={{zIndex: 2}}>
             <h2>Recent Publications</h2>
           </Parallax>
-            <div className={styles.books} ref={booksRef} onTouchMove={(e) => e.preventDefault()}>
+            <motion.div animate={recentIsInView ? 'visible' : 'hidden'} variants={recentVariants} className={styles.books} ref={booksRef} onTouchMove={(e) => e.preventDefault()}>
               {homepage.books.map((book: BookType) => (
-                  <BookItem key={book._id} book={book} view="home" />
+                <motion.div className={styles.book_item_wrapper} key={book._id} variants={recentVariants}>
+                  <BookItem book={book} view="home" />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           <div className={styles.background}>
             <div className={styles.shelf}></div>
             <div className={styles.shelf}></div>

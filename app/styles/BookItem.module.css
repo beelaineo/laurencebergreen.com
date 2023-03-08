@@ -3,16 +3,8 @@
   flex-direction: row;
   margin-bottom: 50px;
   cursor: pointer;
-  margin-left: 4rem;
-  position: relative;
-}
-
-.item:first-of-type {
-  margin-left: 175px;
-}
-
-.item:last-of-type {
-  margin-right: 175px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .cover_wrapper {
@@ -132,13 +124,6 @@
 @media screen and (max-width: 1919px) {
   .item {
     margin-bottom: 40px;
-    margin-left: 75px;
-  }
-  .item:first-of-type {
-    margin-left: 50px;
-  }
-  .item:last-of-type {
-    margin-right: 50px;
   }
   .cover_wrapper {
     height: 420px;
@@ -180,15 +165,6 @@
 }
 
 @media screen and (max-width: 1279px) {
-  .item {
-    margin-left: 20px;
-  }
-  .item:first-of-type {
-    margin-left: 50px;
-  }
-  .item:last-of-type {
-    margin-right: 50px;
-  }
   .cover_wrapper {
     height: 415px;
     width: 275px;
@@ -227,13 +203,6 @@
 @media screen and (max-width: 1023px) {
   .item {
     margin-bottom: 25px;
-    margin-left: 40px;
-  }
-  .item:first-of-type {
-    margin-left: 75px;
-  }
-  .item:last-of-type {
-    margin-right: 75px;
   }
   .cover_wrapper {
     height: 260px;
@@ -278,14 +247,8 @@
 @media screen and (max-width: 767px) {
   .item {
     justify-content: flex-start !important;
-    padding: 0 37px;
+    padding: 0px;
   }
-  .item:first-of-type {
-    margin-left: 37px;
-  }
-  .item:last-of-type {
-    margin-right: 37px;
-  } 
   .info {
     border-top: 1px solid #fff;
     width: 160px;

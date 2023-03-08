@@ -114,6 +114,20 @@
   padding-right: 125px;
 }
 
+.recent .books .book_item_wrapper {
+  position: relative;
+  display: inline-flex;
+  margin-left: 4rem;
+}
+
+.recent .books .book_item_wrapper:first-of-type {
+  margin-left: 175px;
+}
+
+.recent .books .book_item_wrapper:last-of-type {
+  margin-right: 175px;
+}
+
 .recent .background {
   position: absolute;
   width: 100%;
@@ -240,6 +254,15 @@
     padding-left: 100px;
     padding-right: 100px;
   }
+  .recent .books .book_item_wrapper {
+    margin-left: 75px;
+  }
+  .recent .books .book_item_wrapper:first-of-type {
+    margin-left: 50px;
+  }
+  .recent .books .book_item_wrapper:last-of-type {
+    margin-right: 50px;
+  }
   .recent .background {
     height: 300px;
   }
@@ -306,6 +329,15 @@
     padding-left: 100px;
     padding-right: 100px;
   }
+  .recent .books .book_item_wrapper {
+    margin-left: 20px;
+  }
+  .recent .books .book_item_wrapper:first-of-type {
+    margin-left: 50px;
+  }
+  .recent .books .book_item_wrapper:last-of-type {
+    margin-right: 50px;
+  }
   .events {
     padding-top: 250px;
   }
@@ -366,6 +398,15 @@
     padding-top: 100px;
     padding-left: 25px;
     padding-right: 25px;
+  }
+  .recent .books .book_item_wrapper {
+    margin-left: 40px;
+  }
+  .recent .books .book_item_wrapper:first-of-type {
+    margin-left: 75px;
+  }
+  .recent .books .book_item_wrapper:last-of-type {
+    margin-right: 75px;
   }
   .recent .background {
     height: 160px;
@@ -439,6 +480,15 @@
   .recent .books {
     padding-left: 0px;
     padding-right: 0px;
+  }
+  .recent .books .book_item_wrapper {
+    margin-left: 40px;
+  }
+  .recent .books .book_item_wrapper:first-of-type {
+    margin-left: 37px;
+  }
+  .recent .books .book_item_wrapper:last-of-type {
+    margin-right: 37px;
   }
   .events {
     padding-top: 200px;
