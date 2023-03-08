@@ -127,6 +127,7 @@ export default function Homepage({ homepage }: Props) {
           <Img
             src={heroImg.src}
             loader={heroImg.loader}
+            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 80vw, (max-width: 1919px) 80vw, 80vw"
             alt="hero image"
             width={heroImg.width}
             height={heroImg.height}

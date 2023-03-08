@@ -58,17 +58,19 @@ const BookItem = ({ book, view }: BookItemProps) => {
         <Img
           src={imgProps.src}
           loader={imgProps.loader}
-          alt="hero image"
+          alt={title}
           fill
           style={{ objectFit: 'contain' }}
+          sizes="(max-width: 767px) 40vw, 33vw"
           className={styles.cover_image}
         />
         <Img
           src={imgProps.src}
           loader={imgProps.loader}
-          alt="hero image"
+          alt={title}
           fill
           style={{ objectFit: 'contain' }}
+          sizes="(max-width: 767px) 40vw, 33vw"
           className={styles.cover_image_overlay}
         />
         <BookCoverBG color={'rgba(142, 45, 45, 1)'} />

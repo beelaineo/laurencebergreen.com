@@ -70,10 +70,10 @@
   border-top: 2px solid #fff;
   width: 310px;
   height: 60px;
-  height: 200px;
+  height: 350px;
   align-self: end;
   padding: 2rem;
-  margin-bottom: 150px;
+  z-index: 1;
 }
 
 .info h3 {
@@ -155,9 +155,8 @@
   }
   .info {
     width: 250px;
-    height: 150px;
+    height: 250px;
     padding: 30px;
-    margin-bottom: 100px;
   }
   .info h3 {
     letter-spacing: 0px;
@@ -205,8 +204,7 @@
   }
   .info {
     width: 200px;
-    height: 150px;
-    margin-bottom: 100px;
+    height: 250px;
   }
   .item:hover .info h3 {
     transform: translateX(-8px);
@@ -252,9 +250,8 @@
   }
   .info {
     width: 150px;
-    height: 80px;
+    height: 140px;
     padding: 18px;
-    margin-bottom: 60px;
   }
   .info h3 {
     letter-spacing: 0px;
@@ -292,9 +289,8 @@
   .info {
     border-top: 1px solid #fff;
     width: 160px;
-    height: 80px;
+    height: 140px;
     padding: 18px;
-    margin-bottom: 60px;
   }
   .listing .info {
     align-self: flex-start;
