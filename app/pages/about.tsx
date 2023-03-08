@@ -74,6 +74,7 @@ export default function About ({ about }: AboutPageProps) {
           <Img
             src={coverImage.src}
             loader={coverImage.loader}
+            sizes="(max-width: 767px) 100vw, 33vw"
             alt="Portrait of Laurence Bergreen"
             fill
             style={{ objectFit: 'contain' }}
@@ -83,6 +84,7 @@ export default function About ({ about }: AboutPageProps) {
           <Img
             src={coverImage.src}
             loader={coverImage.loader}
+            sizes="(max-width: 767px) 100vw, 33vw"
             alt="Portrait of Laurence Bergreen"
             fill
             style={{ objectFit: 'contain' }}

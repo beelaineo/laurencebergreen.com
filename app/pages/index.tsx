@@ -133,6 +133,7 @@ export default function Homepage({ homepage }: Props) {
             height={heroImg.height}
             className={styles.hero_image}
             style={{ objectFit: 'cover' }}
+            priority
           />
         )}
           <Parallax speed={-10}>

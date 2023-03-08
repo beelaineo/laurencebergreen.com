@@ -30,6 +30,7 @@ const SanityImage = ({ image, caption, color, className, }: SanityImageProps) =>
     <Img
       src={imgProps.src}
       loader={imgProps.loader}
+      sizes="(max-width: 767px) 100vw, 40vw"
       alt={caption}
       style={{ objectFit: 'cover' }}
       className={className}

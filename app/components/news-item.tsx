@@ -26,6 +26,7 @@ const NewsItem = ({ post }: NewsItemProps) => {
           <Img
             src={imgProps.src}
             loader={imgProps.loader}
+            sizes="(max-width: 767px) 40vw, 33vw"
             alt="hero image"
             fill
             className={styles.cover_image}
@@ -33,6 +34,7 @@ const NewsItem = ({ post }: NewsItemProps) => {
           <Img
             src={imgProps.src}
             loader={imgProps.loader}
+            sizes="(max-width: 767px) 40vw, 33vw"
             alt="hero image"
             fill
             className={styles.cover_image_overlay}

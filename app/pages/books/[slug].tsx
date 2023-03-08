@@ -118,10 +118,12 @@ export default function Book ({ book }: BookPageProps) {
             <Img
               src={coverImage.src}
               loader={coverImage.loader}
+              sizes="(max-width: 767px) 100vw, 60vw"
               alt="hero image"
               fill
               style={{ objectFit: 'contain' }}
               className={styles.cover_image}
+              priority
             />
             {category == 'ya_book' ? (
               <div style={{backgroundColor: bookColor, position: 'absolute', zIndex: '-1', height: '100%', width: '100%'}} />
@@ -131,6 +133,7 @@ export default function Book ({ book }: BookPageProps) {
             <Img
               src={coverImage.src}
               loader={coverImage.loader}
+              sizes="(max-width: 767px) 100vw, 60vw"
               alt="hero image"
               fill
               style={{ objectFit: 'contain' }}

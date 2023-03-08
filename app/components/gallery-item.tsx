@@ -44,6 +44,7 @@ const GalleryItem = ({ image, caption, color }: GalleryItemProps) => {
         <Img
           src={imgProps.src}
           loader={imgProps.loader}
+          sizes="(max-width: 767px) 100vw, 33vw"
           alt={caption}
           fill
           style={{ objectFit: 'cover' }}
@@ -53,6 +54,7 @@ const GalleryItem = ({ image, caption, color }: GalleryItemProps) => {
         <Img
           src={imgProps.src}
           loader={imgProps.loader}
+          sizes="(max-width: 767px) 100vw, 33vw"
           alt={caption}
           fill
           style={{ objectFit: 'cover' }}
