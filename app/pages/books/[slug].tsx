@@ -217,11 +217,13 @@ export default function Book ({ book }: BookPageProps) {
           <Parallax speed={-5} style={{zIndex: 2}}>
             <h2>Reviews</h2>
           </Parallax>
-          <Parallax speed={-5} style={{zIndex: 2}}>
-          <div className={styles.arrow_icon}>
-            <Arrow />
-          </div>
-          </Parallax>
+          {reviews?.length > 2 && (
+            <Parallax speed={-5} style={{zIndex: 2}}>
+            <div className={styles.arrow_icon}>
+              <Arrow />
+            </div>
+            </Parallax>
+          )}
           <div className={styles.grid}>
             {reviews.map((review) => (
               <ReviewItem key={review._key} review={review} />

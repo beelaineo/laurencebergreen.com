@@ -46,7 +46,7 @@
 }
 
 .intro {
-  margin: 100px 175px 100px 600px;
+  margin: 100px 300px 100px 800px;
 }
 
 .intro p {
@@ -75,7 +75,7 @@
 }
 
 .intro_block:nth-child(1) .intro_image_wrapper {
-  right: -200px;
+  right: -300px;
   bottom: 30px;
 }
 
@@ -111,7 +111,7 @@
   background-color: #fff!important;
 } */
 
-.intro_image_wrapper img {
+.intro_image_wrapper img, .intro_image_wrapper_single img {
   mix-blend-mode: multiply;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
@@ -147,12 +147,12 @@
 }
 
 .visit {
-  margin: 150px 150px 100px 100px;
+  margin: 150px 150px 100px 175px;
 }
 
 .visit a {
   width: 100%;
-  background-color: #00000009;
+  background-color: #00000017;
   color: #000;
   font-size: 60px;
   line-height: 70px;
@@ -365,9 +365,8 @@
     height: 90vh;
   }
   .intro {
-    margin: 300px 150px 100px 500px;
-    margin: 0 150px;
-    padding: 150px 75px 75px 75px;
+    margin: 0 150px 0 350px;
+    padding: 150px 75px 75px 100px;
   }
   .intro p {
     font-size: 55px;
@@ -387,7 +386,7 @@
     bottom: -500px;
   }
   .intro_block:nth-child(2) .intro_image_wrapper {
-    left: -225px;
+    left: -450px;
     bottom: -700px;
   }
   .intro_image_wrapper {
@@ -410,7 +409,7 @@
     margin-left: 350px;
   }
   .visit {
-    margin: 150px 75px 100px 75px;
+    margin: 150px 175px 100px 175px;
   }
   .visit a {
     font-size: 45px;
@@ -577,10 +576,10 @@
   }
   .meta .accolades {
     width: 500px;
-    margin-left: 350px;
+    margin-left: 85px;
   }
   .visit {
-    margin: 125px 75px 100px 75px;
+    margin: 125px 125px 100px 125px;
   }
   .visit a {
     font-size: 24px;
@@ -752,7 +751,7 @@
     align-self: end;
   }
   .visit {
-    margin: 100px 75px 75px 75px;
+    margin: 100px 100px 75px 100px;
   }
   .visit a {
     font-size: 18px;
