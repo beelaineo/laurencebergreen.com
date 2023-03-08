@@ -48,6 +48,7 @@ export default function Book ({ book }: BookPageProps) {
     if (!book) return
     console.log('useEffect asPath book color:', book.color)
     updateMenuColor(book.color)
+    headingRef.current.focus()
   }, [asPath])
 
   if (!book) return <NotFound />
