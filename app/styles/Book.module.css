@@ -207,6 +207,10 @@
   display: block;
 }
 
+.buy .grid a:hover {
+  color: #00000080;
+}
+
 .reviews {
   position: relative;
   width: 100%;
@@ -268,6 +272,10 @@
  letter-spacing: 2px;
  line-height: 50px;
  color: #000; 
+}
+
+.excerpt .text_wrapper p {
+  margin-bottom: 1em;
 }
 
 .excerpt .text_wrapper button {
@@ -962,14 +970,14 @@
     column-gap: 37px;
   }
   .excerpt {
-    margin-top: 37px;
+    margin-top: 125px;
   }
   .excerpt h2 {
     margin-left: 37px;
     margin-top: -50px;
   }
   .excerpt .text_wrapper {
-    margin: 50px 37px 50px 37px;
+    margin: 75px 37px 50px 37px;
   }
   .gallery {
     margin-top: 125px;
