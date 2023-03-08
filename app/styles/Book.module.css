@@ -105,13 +105,13 @@
   transition: all 500ms ease-out;
 }
 
-.intro_image_wrapper:hover, .intro_image_wrapper_single:hover {
+/* .intro_image_wrapper:hover, .intro_image_wrapper_single:hover {
   z-index: 3;
   cursor: pointer;
   background-color: #fff!important;
-}
+} */
 
-.intro_image {
+.intro_image_wrapper img {
   mix-blend-mode: multiply;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);

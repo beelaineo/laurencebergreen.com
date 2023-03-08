@@ -47,7 +47,8 @@ const MenuProvider = ({ children }: MenuProviderProps) => {
     setMenuColor('rgba(142,45,45,.85)')
   }
   const updateMenuColor = (color: rgbaColor) => {
-    const rgbCode = `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},.85))`
+    const rgbCode = `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},.85)`
+    console.log('updateMenuColor', rgbCode)
     setMenuColor(rgbCode)
   }
   return (

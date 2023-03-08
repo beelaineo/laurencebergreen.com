@@ -9,6 +9,7 @@ import styles from '../../styles/Book.module.css'
 import sanityClient from '../../sanityClient'
 import Img from 'next/image'
 import Image from 'next/image'
+import SanityImage from '../../components/sanity-image'
 import { useNextSanityImage, UseNextSanityImageProps } from 'next-sanity-image'
 import BookCoverBG from '../../components/cover-bg'
 import ReviewItem from '../../components/review-item'
@@ -19,38 +20,37 @@ import LinkIcon from '../../components/icon-link'
 import { Parallax } from 'react-scroll-parallax'
 import { useMenu } from '../../providers/menu-provider'
 import { collapseTextChangeRangesAcrossMultipleVersions, isConstructorDeclaration, visitEachChild } from 'typescript'
+const { useEffect, useState } = React
 
 interface BookPageProps {
   book: BookType
 }
 
 export default function Book ({ book }: BookPageProps) {
-  const [showExcerpt, setShowExcerpt] = React.useState(false)
+  const [showExcerpt, setShowExcerpt] = useState(false)
   const { updateMenuColor } = useMenu()
+  const { asPath } = useRouter()
+
+  const coverImage: UseNextSanityImageProps = useNextSanityImage(
+		sanityClient,
+		book?.cover
+	)
   
+  useEffect(() => {
+    if (!book) return
+    console.log('useEffect book color:', book.color)
+    updateMenuColor(book.color)
+  }, [])
+
+  useEffect(() => {
+    if (!book) return
+    console.log('useEffect asPath book color:', book.color)
+    updateMenuColor(book.color)
+  }, [asPath])
+
   if (!book) return <NotFound />
 
   const { title, slug, intro, intro_gallery, cover, color, date, visit, accolades, publishers, buy_link, sellers, reviews, excerpt, gallery, links } = book
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const coverImage: UseNextSanityImageProps = useNextSanityImage(
-		sanityClient,
-		cover
-	)
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const introImage1: UseNextSanityImageProps = (intro_gallery && intro_gallery[0]) ? useNextSanityImage(
-    sanityClient,
-    intro_gallery[0]
-  ) : null
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const introImage2: UseNextSanityImageProps = (intro_gallery && intro_gallery[0]) ? useNextSanityImage(
-		sanityClient,
-		intro_gallery[1]
-	) : null
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  React.useEffect(() => {
-    updateMenuColor(color)
-  }, [color, updateMenuColor])
 
   const handleMore = () => {
     console.log('click more')
@@ -138,16 +138,9 @@ export default function Book ({ book }: BookPageProps) {
             {IntroBlock1 && IntroBlock1?.length > 0 && (
               <PortableText value={IntroBlock1} />
             )}
-            {introImage1 && (
-              <Parallax speed={5} className={!introImage2 ? styles.intro_image_wrapper_single : styles.intro_image_wrapper} style={{backgroundColor: bookColor}}>
-                <Img
-                  src={introImage1.src}
-                  loader={introImage1.loader}
-                  alt="Intro image"
-                  className={styles.intro_image}
-                  width={introImage1.width}
-                  height={introImage1.height}
-                />
+            {intro_gallery && intro_gallery[0] && (
+              <Parallax speed={5} className={!intro_gallery[1] ? styles.intro_image_wrapper_single : styles.intro_image_wrapper} style={{backgroundColor: bookColor}}>
+                <SanityImage image={intro_gallery[0]} caption={'Intro image'} />
               </Parallax>
             )}
           </div>
@@ -155,16 +148,9 @@ export default function Book ({ book }: BookPageProps) {
             {IntroBlock2 && IntroBlock2?.length > 0 && (
               <PortableText value={IntroBlock2} />
             )}
-            {introImage2 && (
+            {intro_gallery && intro_gallery[1] && (
               <Parallax speed={5} className={styles.intro_image_wrapper} style={{backgroundColor: bookColor}}>
-                <Img
-                  src={introImage2.src}
-                  loader={introImage2.loader}
-                  alt="Intro image"
-                  width={introImage2.width}
-                  height={introImage2.height}
-                  className={styles.intro_image}
-                />
+                <SanityImage image={intro_gallery[1]} caption={'Intro image'} />
               </Parallax>
             )}
           </div>
