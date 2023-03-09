@@ -13,7 +13,7 @@ import Arrow from '../components/icon-arrow'
 import { Parallax } from 'react-scroll-parallax'
 import { motion, useScroll, useInView, Variants } from "framer-motion"
 import useWindowDimensions from '../hooks/useWindowDimensions'
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import { useMenu } from '../providers/menu-provider'
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T
@@ -33,10 +33,12 @@ interface EventType {
 }
 
 export default function Homepage({ homepage }: Props) {
-  const [loading, setLoading] = React.useState(true)
-  const [showHeading, setShowHeading] = React.useState(false)
-  const [showImage, setShowImage] = React.useState(false)
-  const [showSticker, setShowSticker] = React.useState(false)
+  const [loading, setLoading] = useState(true)
+  const [showHeading, setShowHeading] = useState(false)
+  const [showImage, setShowImage] = useState(false)
+  const [showSticker, setShowSticker] = useState(false)
+  const [recentIntersectBottom, setRecentIntersectBottom] = useState(false)
+  const [lastBookIntersect, setLastBookIntersect] = useState(false)
   const { width, height } = useWindowDimensions()
   const heroImg: UseNextSanityImageProps = useNextSanityImage(
 		sanityClient,
@@ -57,7 +59,10 @@ export default function Homepage({ homepage }: Props) {
     const headingTimer = setTimeout(() => {setShowHeading(true), 3000})
     const imageTimer = setTimeout(() => {setShowImage(true), 1000})
     const stickerTimer = setTimeout(() => {setShowSticker(true), 5000})
+    window.addEventListener('scroll', handleScroll)
+
     return () => {
+      window.removeEventListener('scroll', handleScroll)
       clearTimeout(loadingTimer)
       clearTimeout(imageTimer)
       clearTimeout(stickerTimer)
@@ -65,21 +70,42 @@ export default function Homepage({ homepage }: Props) {
     }
   }, [])
 
-// useEffect(() => {
-//   console.log('loading:', loading, )
-// }, [loading])
-// useEffect(() => {
-//   console.log('showImage:', showImage)
-// }, [showImage])
-// useEffect(() => {
-//   console.log('showSticker:', showSticker)
-// }, [showSticker])
-
 // when recent section is at bottom of screen, scroll horizontally to end of books row 
   const recentRef = useRef(null)
   const booksRef = useRef(null)
+  const lastBookRef = useRef(null)
 
   const recentIsInView = useInView(recentRef)
+
+  const handleScroll = () => {
+    if (recentRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = recentRef.current
+      if (scrollTop + clientHeight === scrollHeight) {
+        console.log('Reached bottom')
+        setRecentIntersectBottom(true)
+      }
+    }
+    if (lastBookRef.current) {
+      const { offsetLeft, offsetParent, clientWidth } = lastBookRef.current
+      const lastBookRect = lastBookRef.current.getBoundingClientRect()
+      const booksRect = booksRef.current.getBoundingClientRect()
+      const booksStyle = window.getComputedStyle(booksRef.current)
+      const lastBookStyle = window.getComputedStyle(lastBookRef.current)
+      const booksPaddingRight = parseInt(booksStyle.paddingRight)
+      const lastBookMarginRight = parseInt(lastBookStyle.marginRight)
+      const offset = lastBookRect.right - booksRect.right
+      const distanceFromRight = booksRef.current.offsetRight
+      console.log('BOOKS OFFSET', offset)
+      console.log('BOOKS PADDING + BOOK MARGIN', booksPaddingRight + lastBookMarginRight)
+      if (offset + booksPaddingRight + lastBookMarginRight == 0) console.log('reached end of books!')
+      if (offset + booksPaddingRight + lastBookMarginRight == 0) {
+        setLastBookIntersect(true)
+      } else {
+        setLastBookIntersect(false)
+      }
+    }
+    
+  }
 
   // useEffect(() => {
   //   const recentObserver = new IntersectionObserver((entries) => {
@@ -179,8 +205,8 @@ export default function Homepage({ homepage }: Props) {
             <h2>Recent Publications</h2>
           </Parallax>
             <motion.div animate={recentIsInView ? 'visible' : 'hidden'} variants={recentVariants} className={styles.books} ref={booksRef} onTouchMove={(e) => e.preventDefault()}>
-              {homepage.books.map((book: BookType) => (
-                <motion.div className={styles.book_item_wrapper} key={book._id} variants={recentVariants}>
+              {homepage.books.map((book: BookType, i: number) => (
+                <motion.div className={styles.book_item_wrapper} key={book._id} variants={recentVariants} ref={i + 1 == homepage.books.length ? lastBookRef : null}>
                   <BookItem book={book} view="home" />
                 </motion.div>
               ))}
