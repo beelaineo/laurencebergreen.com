@@ -216,6 +216,7 @@
   display: flex;
   column-gap: 6rem;
   padding: 0 180px;
+  scroll-snap-type: mandatory x;
 }
 
 .news .wrapper::-webkit-scrollbar {
@@ -225,6 +226,10 @@
 .news .wrapper {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.news .wrapper > div {
+  scroll-snap-align: start;
 }
 
 /* BREAKPOINTS - 1919, 1279, 1023, 767 */

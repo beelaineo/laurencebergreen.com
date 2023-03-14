@@ -53,16 +53,26 @@ export default function Homepage({ homepage }: Props) {
 
   const { resetMenuColor } = useMenu()
 
+  // when recent section is at bottom of screen, scroll horizontally to end of books row 
+  const mainRef = useRef(null)
+  const recentRef = useRef(null)
+  const booksRef = useRef(null)
+  const lastBookRef = useRef(null)
+  const eventsRef = useRef(null)
+  const newsRef = useRef(null)
+
+  const recentIsInView = useInView(recentRef)
+  const eventsIsInView = useInView(eventsRef)
+  const newsIsInView = useInView(newsRef)
+  
   useEffect(() => {
     resetMenuColor()
     const loadingTimer = setTimeout(() => {setLoading(false), 500})
     const headingTimer = setTimeout(() => {setShowHeading(true), 3000})
     const imageTimer = setTimeout(() => {setShowImage(true), 1000})
     const stickerTimer = setTimeout(() => {setShowSticker(true), 5000})
-    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
       clearTimeout(loadingTimer)
       clearTimeout(imageTimer)
       clearTimeout(stickerTimer)
@@ -70,54 +80,87 @@ export default function Homepage({ homepage }: Props) {
     }
   }, [])
 
-// when recent section is at bottom of screen, scroll horizontally to end of books row 
-  const recentRef = useRef(null)
-  const booksRef = useRef(null)
-  const lastBookRef = useRef(null)
-
-  const recentIsInView = useInView(recentRef)
-
-  const handleScroll = () => {
-    if (recentRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = recentRef.current
-      if (scrollTop + clientHeight === scrollHeight) {
-        console.log('Reached bottom')
-        setRecentIntersectBottom(true)
-      }
-    }
-    if (lastBookRef.current) {
-      const { offsetLeft, offsetParent, clientWidth } = lastBookRef.current
-      const lastBookRect = lastBookRef.current.getBoundingClientRect()
-      const booksRect = booksRef.current.getBoundingClientRect()
-      const booksStyle = window.getComputedStyle(booksRef.current)
-      const lastBookStyle = window.getComputedStyle(lastBookRef.current)
-      const booksPaddingRight = parseInt(booksStyle.paddingRight)
-      const lastBookMarginRight = parseInt(lastBookStyle.marginRight)
-      const offset = lastBookRect.right - booksRect.right
-      const distanceFromRight = booksRef.current.offsetRight
-      console.log('BOOKS OFFSET', offset)
-      console.log('BOOKS PADDING + BOOK MARGIN', booksPaddingRight + lastBookMarginRight)
-      if (offset + booksPaddingRight + lastBookMarginRight == 0) console.log('reached end of books!')
-      if (offset + booksPaddingRight + lastBookMarginRight == 0) {
-        setLastBookIntersect(true)
-      } else {
-        setLastBookIntersect(false)
-      }
-    }
-    
+  //@ts-ignore
+  const callBackFunctionRecent = (entries) => {
+    const [ entry ] = entries
+    console.log('RECENT INTERSECTION ENTRY', entry)
+    setRecentIntersectBottom(entry.isIntersecting)
   }
 
-  // useEffect(() => {
-  //   const recentObserver = new IntersectionObserver((entries) => {
-  //     if (entries[0].isIntersecting) {
-  //       booksRef.current.scrollLeft = booksRef.current.scrollWidth
-  //     }
-  //   }, {threshold: 1})
-  //   recentObserver.observe(recentRef.current)
-  //   return () => {
-  //     recentObserver.disconnect()
-  //   }
-  // }, [])
+  useEffect(() => {
+    const recent = recentRef.current
+    const recentOptions = {
+      //@ts-ignore
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+
+    const recentObserver = new IntersectionObserver(callBackFunctionRecent, recentOptions)
+    if (recent) recentObserver.observe(recent)
+
+    return () => {
+      if(recent) recentObserver.unobserve(recent)
+    }
+  }, [recentRef])
+
+  useEffect(() => {
+    const books = booksRef.current
+    const recent = recentRef.current
+    const last = lastBookRef.current
+
+      const { scrollTop, scrollHeight, clientHeight } = recent
+      if (scrollTop + clientHeight == scrollHeight) {
+        console.log('recent div', recent)
+        console.log('Reached bottom')
+        setRecentIntersectBottom(true)
+      } else {
+        setRecentIntersectBottom(false)
+      }
+
+  }, [recentRef, lastBookRef, booksRef])
+
+  useEffect(() => {
+    const container = mainRef.current
+    if (recentIntersectBottom) {
+      console.log('scrolling books, intersecting bottom!')
+      container.addEventListener('wheel', handleScroll)
+    }
+    if (lastBookIntersect) {
+      console.log('at the end! cancel scroll handler')
+      container.removeEventListener('wheel', handleScroll)
+    }
+    return () => {
+      container.removeEventListener('wheel', handleScroll)
+    }
+  }, [recentIntersectBottom, lastBookIntersect])
+
+  const handleScroll = (ev: WheelEvent) => {
+    const last = lastBookRef.current
+    const books = booksRef.current
+    const { offsetLeft, offsetParent, clientWidth } = last
+    const lastBookRect = last.getBoundingClientRect()
+    const booksRect = books.getBoundingClientRect()
+    const booksStyle = window.getComputedStyle(books)
+    const lastBookStyle = window.getComputedStyle(last)
+    const booksPaddingRight = parseInt(booksStyle.paddingRight)
+    const lastBookMarginRight = parseInt(lastBookStyle.marginRight)
+    const offset = lastBookRect.right - booksRect.right
+    // console.log('BOOKS OFFSET', offset)
+    // console.log('BOOKS PADDING + BOOK MARGIN', booksPaddingRight + lastBookMarginRight)
+    if (offset + booksPaddingRight + lastBookMarginRight == 0) console.log('reached end of books!')
+    if (offset + booksPaddingRight + lastBookMarginRight == 0) {
+      setLastBookIntersect(true)
+    } else {
+      console.log('not at end of books')
+      setLastBookIntersect(false)
+    }
+
+    console.log('EVENT', ev)
+    console.log('DELTAY', ev.deltaY)
+    ev.preventDefault()
+    booksRef.current.scrollLeft += ev.deltaY
+  }
 
   const heroVariants = {
     hidden: { opacity: 0, y: -16 },
@@ -126,7 +169,10 @@ export default function Homepage({ homepage }: Props) {
       y: 0,
       transition: {
         delayChildren: 0.5,
-        staggerChildren: 0.25
+        staggerChildren: 0.25,
+        type: "spring",
+        stiffness: 300,
+        damping: 24
       }
     },
   }
@@ -137,19 +183,31 @@ export default function Homepage({ homepage }: Props) {
       y: 0, 
       transition: {
         duration: 0.5,
+        type: "spring",
+        stiffness: 300,
+        damping: 24
       }
     },
   }
 
-  const recentVariant = { hidden: { opacity: 0, y: 20 } }
-
-  const recentVariants: Variants = {
+  const recentVariants = {
+    hidden: {
+      opacity: 0
+    },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { staggerChildren: 0.3, type: "spring", stiffness: 300, damping: 24 }
+      type: "spring",
+      stiffness: 300,
+      damping: 24
+    }
+  }
+
+  const newsVariants: Variants = {
+    visible: {
+      opacity: 1,
+      transition: { delayChildren: 0.33, staggerChildren: 0.3, type: "spring", stiffness: 300, damping: 24 }
     },
-    hidden: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+    hidden: { opacity: 0, transition: { duration: 0.2 } }
   }
 
   return (
@@ -160,7 +218,7 @@ export default function Homepage({ homepage }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main className={styles.main} ref={mainRef}>
         <section className={styles.hero}>
         {loading == false && showImage == true && (
           <Img
@@ -202,39 +260,45 @@ export default function Homepage({ homepage }: Props) {
         </section>
         <section className={styles.recent} ref={recentRef}>
           <Parallax speed={-10} style={{zIndex: 2}}>
-            <h2>Recent Publications</h2>
+            <motion.h2 animate={recentIsInView ? 'visible' : 'hidden'} variants={recentVariants}>Recent Publications</motion.h2>
           </Parallax>
-            <motion.div animate={recentIsInView ? 'visible' : 'hidden'} variants={recentVariants} className={styles.books} ref={booksRef} onTouchMove={(e) => e.preventDefault()}>
+            <div className={styles.books} ref={booksRef} onTouchMove={(e) => e.preventDefault()}>
               {homepage.books.map((book: BookType, i: number) => (
-                <motion.div className={styles.book_item_wrapper} key={book._id} variants={recentVariants} ref={i + 1 == homepage.books.length ? lastBookRef : null}>
+                <div className={styles.book_item_wrapper} key={book._id} ref={i + 1 == homepage.books.length ? lastBookRef : null}>
                   <BookItem book={book} view="home" />
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           <div className={styles.background}>
             <div className={styles.shelf}></div>
             <div className={styles.shelf}></div>
           </div>
         </section>
-        <section className={styles.events}>
-          <div className={styles.wrapper}>
+        <section className={styles.events} ref={eventsRef}>
+          <motion.div className={styles.wrapper} animate={eventsIsInView ? 'visible' : 'hidden'} variants={newsVariants}>
             <Parallax speed={-10} className={styles.h2_wrapper}><h2>Speaking Engagements</h2></Parallax>
               {homepage.events.map((event: SanityKeyed<EventType>, i: number) => (
-                <EventItem key={i} event={event} />
+                <motion.div key={i} variants={newsVariants}>
+                  <EventItem event={event} />
+                </motion.div>
               ))}
-          </div>
+          </motion.div>
         </section>
-        <section className={styles.news}>
+        <motion.section animate={newsIsInView ? 'visible' : 'hidden'} variants={newsVariants} className={styles.news} ref={newsRef}>
+          <motion.div variants={newsVariants}>
           <Parallax speed={-10} className={styles.h2_wrapper}>News</Parallax>
           <Parallax speed={-10} className={styles.arrow_icon}>
             <Arrow />
           </Parallax>
+          </motion.div>
           <div className={styles.wrapper}>
             {homepage.news.map((post: SanityKeyed<Post>, i: number) => (
-              <NewsItem key={i} post={post} />
+              <motion.div key={i} variants={newsVariants}>
+                <NewsItem post={post} />
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
       </main>
     </>
   )

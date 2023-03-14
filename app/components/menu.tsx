@@ -76,7 +76,7 @@ export default function Menu() {
         color: #00000080;
       }
     `}</style>
-    <motion.div className={styles.menu} animate={menuIsOpen ? "show" : "hidden"} variants={menuVariants} style={{ backgroundColor: menuColor}}>
+    <motion.div className={styles.menu} animate={menuIsOpen ? "show" : "hidden"} variants={menuVariants} style={{ pointerEvents: menuIsOpen ? 'auto' : 'none', backgroundColor: menuColor}}>
       <div className={styles.wrapper}>
         <nav className={styles.nav}>
           {settings?.nav_links.map((item: SanityKeyed<NavLinkType>, i: number) => (
