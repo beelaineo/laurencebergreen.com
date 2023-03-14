@@ -6,6 +6,7 @@ import sanityClient from '../sanityClient'
 import { SanityKeyed } from 'sanity-codegen'
 import { Book as BookType } from '../sanity-schema'
 import { useRouter } from 'next/router'
+import { motion, useScroll, useInView, Variants } from 'framer-motion'
 
 const { useEffect, useState } = React
 
@@ -47,6 +48,27 @@ export default function Menu() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asPath])
 
+  const menuVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.33,
+        staggerChildren: 0.25
+      }
+    },
+  }
+
+  const navLinkVariant = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.25,
+      }
+    },
+  }
+
   return (
     <>
     <style jsx global>{`
@@ -54,29 +76,31 @@ export default function Menu() {
         color: #00000080;
       }
     `}</style>
-    <div className={([styles.menu, menuIsOpen ? styles.open : '']).join(" ")} style={{ backgroundColor: menuColor}}>
+    <motion.div className={styles.menu} animate={menuIsOpen ? "show" : "hidden"} variants={menuVariants} style={{ backgroundColor: menuColor}}>
       <div className={styles.wrapper}>
         <nav className={styles.nav}>
           {settings?.nav_links.map((item: SanityKeyed<NavLinkType>, i: number) => (
-            <Link key={i} href={item.slug} className={pathname == item.slug ? "active" : ""}>{item.title}</Link>
+            <motion.div key={i} variants={navLinkVariant}>
+              <Link key={i} href={item.slug} className={pathname == item.slug ? "active" : ""}>{item.title}</Link>
+            </motion.div>
             )
           )}
         </nav>
-        <div className={styles.books}>
+        <motion.div className={styles.books} variants={navLinkVariant}>
           {books?.filter((item: SanityKeyed<BookType>) => item.category == 'book' ).map((item: SanityKeyed<BookType>, i: number) => (
             <Link key={i} href={`/books/${item.slug}`} className={asPath == `/books/${item.slug}` ? "active" : ""}>{item.title}</Link>
             )
           )}
-        </div>
-        <div className={styles.books}>
+        </motion.div>
+        <motion.div className={styles.books} variants={navLinkVariant}>
           <h3>Young Adult Books</h3>
           {books?.filter((item: SanityKeyed<BookType>) => item.category == 'ya_book' ).map((item: SanityKeyed<BookType>, i: number) => (
             <Link key={i} href={`/books/${item.slug}`} className={asPath == `/books/${item.slug}` ? "active" : ""}>{item.title}</Link>
             )
           )}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
     </>
   )
 }
